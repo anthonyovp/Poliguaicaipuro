@@ -92,12 +92,12 @@
 
 	
 
-    	public function incluirActa($numero,$fecha,$tipo,$comentario,$unidad,$sector,$dependencia,$cod_pro){
+    	public function incluirActa($numero,$fecha,$hora,$tipo,$comentario,$unidad,$sector,$dependencia,$cod_pro){
 	       // $objDatos = new clsDatos();
 			$this->objDatos= new clsDatos();
 		    $this->objDatos->conectar();
 		   
-	        $sql = "INSERT INTO Acta(numero_act,fecha_act,tipo_act,comentario_act,unidad_act,sector_act,dependencia_act,cod_pro) VALUES ('$numero','$fecha','$tipo','$comentario','$unidad','$sector','$dependencia','$cod_pro')";
+	        $sql = "INSERT INTO Acta(numero_act,fecha_act,hora_act,tipo_act,comentario_act,unidad_act,sector_act,dependencia_act,cod_pro) VALUES ('$numero','$fecha','$hora','$tipo','$comentario','$unidad','$sector','$dependencia','$cod_pro')";
 	      
 	        $id = $this->objDatos->getId($sql);
 		    $this->objDatos->desconectar();

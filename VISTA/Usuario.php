@@ -98,14 +98,14 @@ session_start();
                             <li>
                                 <a href="#">
                                     <span class="label label-danger"><i class="icon_book_alt"></i></span> 
-                                    Llamar al Jefe de TrÃ¡nsito.
+                                    Llamar al Jefe de Tr&aacute;nsito.
                                     <span class="small italic pull-right">1 hr</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <span class="label label-success"><i class="icon_like"></i></span> 
-                                    Solicitar Actas de AprensiÃ³n.
+                                    Solicitar Actas de Aprensión.
                                     <span class="small italic pull-right"> Ayer</span>
                                 </a>
                             </li>                            
@@ -133,7 +133,7 @@ session_start();
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile.html"><i class="icon_profile"></i> Mi Perfil</a>
+                                <a href="Perfil.php"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             
                             <li>
@@ -160,7 +160,7 @@ session_start();
 
         if(!$obj->autenticado()){
  
-            echo "<script language='javascript'> alert('Debe Iniciar SesiÃ³n!'); window.history.go(-1);</script>";
+            echo "<script language='javascript'> alert('Debe Iniciar Sesión!'); window.history.go(-1);</script>";
         }
         $tipoU = $obj->Autenticado();
 
@@ -176,6 +176,7 @@ session_start();
               if($tipoU=="Administrador1"||$tipoU=="SuperUsuario"){
                   echo'             
                   <li class="active">
+                   <li class="active">
                       <a class="" href="Usuario.php">                           
                             <i class="icon_documents_alt"></i>
                             <span>Actas Policiales</span>
@@ -190,7 +191,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">RÃ©cords Disciplinarios</a></li>
+                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -202,10 +203,11 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por AÃ±os</a></li>
+                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Años</a></li>
                           <li><a class="" href="GraficasActasSector.php">Estad&iacute;sticas por Sectores</a></li>
                       </ul>
                   </li>
+                  
                   ';
 
 
@@ -213,10 +215,10 @@ session_start();
               if($tipoU=="Administrador2"||$tipoU=="SuperUsuario"){
                   echo'
 
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
-                          <span>ReseÃ±as Policiales</span>
+                          <span>Reseñas Policiales</span>
                           
                       </a>
                                          
@@ -225,7 +227,7 @@ session_start();
                   <li class="sub-menu">
                       <a href="Resena.php" class="">
                           <i class="icon_table"></i>
-                           <span>Manejar ReseÃ±as</span>
+                           <span>Manejar Reseñas</span>
                           
                       </a>
                       
@@ -238,7 +240,7 @@ session_start();
                       </a>
                       <ul class="sub">
                           <li><a class="" href="general.html">Estad&iacute;sticas por Mes</a></li>
-                          <li><a class="" href="buttons.html">Estad&iacute;sticas por AÃ±o</a></li>
+                          <li><a class="" href="buttons.html">Estad&iacute;sticas por Año</a></li>
                           <li><a class="" href="grids.html">Estad&iacute;sticas por lugar</a></li>
                       </ul>
                   </li>
@@ -272,7 +274,7 @@ session_start();
                       </a>
                       <ul class="sub">
                           <li><a class="" href="Estadisticas MultaM.html">Estad&iacute;sticas por Mes</a></li>
-                          <li><a class="" href="buttons.html">Estad&iacute;sticas por AÃ±o</a></li>
+                          <li><a class="" href="buttons.html">Estad&iacute;sticas por Año</a></li>
                           <li><a class="" href="grids.html">Estad&iacute;sticas por lugar</a></li>
                       </ul>
                   </li>
@@ -282,7 +284,7 @@ session_start();
                if($tipoU=="SuperUsuario"){
              echo'
                   
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Usuarios</span>
@@ -303,7 +305,7 @@ session_start();
                   <li class="sub-menu">
                       <a href="Resena.php" class="">
                           <i class="icon_table"></i>
-                           <span>Manejar BitÃ¡cora</span>
+                           <span>Manejar Bitácora</span>
                           
                       </a>
                       
@@ -359,14 +361,14 @@ session_start();
         <ul class="today-datas">
                 <!-- List #1 -->
         <li>
-                  <!-- Graph -->
+                   <!-- Graph -->
                   <div><span id="todayspark1" class="spark"></span></div>
                   <!-- Text -->
-                  <div class="datas-text">11,500 Visitantes / DÃ­a</div>
+                  <div class="datas-text">11,500 Visitantes / Día</div>
                 </li>
                 <li>
                   <div><span id="todayspark2" class="spark"></span></div>
-                  <div class="datas-text">15,000 PÃ¡ginas vistas</div>
+                  <div class="datas-text">15,000 Páginas vistas</div>
                 </li>
                 <li>
                   <div><span id="todayspark3" class="spark"></span></div>
@@ -374,7 +376,7 @@ session_start();
                 </li>
                 <li>
                   <div><span id="todayspark4" class="spark"></span></div>
-                  <div class="datas-text">Bs 5000,00 Ingresos / DÃ­a</div>
+                  <div class="datas-text">Bs 5000,00 Ingresos / Día</div>
                 </li> 
                 <li>
                   <div><span id="todayspark5" class="spark"></span></div>
@@ -396,7 +398,7 @@ session_start();
         <div class="col-lg-9 col-md-12">  
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h2><i class="fa fa-flag-o red"></i><strong>Actas Registradas</strong></h2>
+             <h2><i class="fa fa-flag-o red"></i><strong>Actas Registradas</strong></h2>
               <div class="panel-actions">
                 <a href="Usuario.php#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
                 <a href="Usuario.php#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
@@ -542,7 +544,7 @@ session_start();
           
           <div class="social-box facebook">
             <i class="fa fa-facebook"></i>
-            <ul>
+           <ul>
               <li>
                 <strong>256</strong>
                 <span>Amigos</span>
@@ -565,7 +567,7 @@ session_start();
               </li>
               <li>
                 <strong>256</strong>
-                <span>CÃ­rculos</span>
+                <span>Círculos</span>
               </li>
             </ul>
           </div><!--/social-box-->      
@@ -616,7 +618,7 @@ session_start();
                   <!-- Widget content -->
                   <div class="padd sscroll">
                     
-                    <ul class="chats">
+                     <ul class="chats">
 
                       <!-- Chat by us. Use the class "by-me". -->
                       <li class="by-me">
@@ -627,8 +629,8 @@ session_start();
 
                         <div class="chat-content">
                           <!-- In meta area, first include "name" and then "time" -->
-                          <div class="chat-meta">Pedro PÃ©rez<span class="pull-right">Hace 3 horas</span></div>
-                          Detenidos 3 sujetos involucrados en robo de vehÃ­culo.
+                          <div class="chat-meta">Pedro Pérez<span class="pull-right">Hace 3 horas</span></div>
+                          Detenidos 3 sujetos involucrados en robo de vehículo.
                           <div class="clearfix"></div>
                         </div>
                       </li> 
@@ -654,8 +656,8 @@ session_start();
                         </div>
 
                         <div class="chat-content">
-                          <div class="chat-meta">Pedro PÃ©rez <span class="pull-right">Hace 4 horas</span></div>
-                          DetenciÃ³n de un sujeto por falta a la autoridad.
+                          <div class="chat-meta">Pedro Pérez <span class="pull-right">Hace 4 horas</span></div>
+                          Detención de un sujeto por falta a la autoridad.
                           <div class="clearfix"></div>
                         </div>
                       </li>  
@@ -669,7 +671,7 @@ session_start();
                         <div class="chat-content">
                           <!-- In the chat meta, first include "time" then "name" -->
                           <div class="chat-meta">Hace 3 horas <span class="pull-right">Isbel Moreno</span></div>
-                          Pedro PÃ©rez ganador de la orden del dÃ­a.
+                          Pedro Pérez ganador de la orden del día.
                           <div class="clearfix"></div>
                         </div>
                       </li>                                                                                  
@@ -679,8 +681,8 @@ session_start();
                         </div>
 
                         <div class="chat-content">
-                          <div class="chat-meta">Pedro PÃ©rez <span class="pull-right">Hace 4 horas</span></div>
-                          Seguimiento en evento de ventas de electrodomÃ©sticos en el Municipio Libertador.
+                          <div class="chat-meta">Pedro Pérez <span class="pull-right">Hace 4 horas</span></div>
+                          Seguimiento en evento de ventas de electrodomésticos en el Municipio Libertador.
                           <div class="clearfix"></div>
                         </div>
                       </li>  

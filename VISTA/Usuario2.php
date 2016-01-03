@@ -776,20 +776,28 @@ session_start();
                                   <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Usuario.php" enctype = "multipart/form-data">
                                     <div class="form-group ">
                                           
-                                          <div class="col-lg-2">
-                            
+                                          <div class="col-lg-1">
+                                                    &nbsp;
+                                                    </div>
+                                          <div class="col-lg-11">
+                                                  <output  id="list" class="cargarimagen" ></output>
                                                   <label for="nombre" class="control-label col-lg-3">Foto<span class="required">*</span></label><br><br>
-                                                   <output  id="list" class="cargarimagen" ></output></center>
-                                 
-                                          </div>
-                                          <div class="col-lg-10">
-                                           
-
                                                   <input type="file" id="files" class="adjuntedefoto" name="files" required/>
+                                                   
+                                 
+                                         
+                                      
                                                   <br><br>
+
+                                           </div>        
+                                    </div>
+                                          
+                                           
+                                                  
+                                                  
                                                   <div class="form-group ">
-                                                      <label for="nombre" class="control-label col-lg-4">Primer Nombre<span class="required">*</span></label>
-                                                      <div class="col-lg-8">
+                                                      <label for="nombre" class="control-label col-lg-3">Primer Nombre<span class="required">*</span></label>
+                                                      <div class="col-lg-9">
                                                             <div class="input-group">
                                                    
                                                                   <input class="form-control " id="nombre" type="text" name="nombre" required />
@@ -803,8 +811,8 @@ session_start();
                                               
                                                   </div>
                                                   <div class="form-group ">
-                                                      <label for="apellido" class="control-label col-lg-4">Primer Apellido<span class="required">*</span></label>
-                                                      <div class="col-lg-8">
+                                                      <label for="apellido" class="control-label col-lg-3">Primer Apellido<span class="required">*</span></label>
+                                                      <div class="col-lg-9">
                                                           <div class="input-group">
                                                   
                                                               <input class="form-control " id="apellido" type="text" name="apellido" required />
@@ -817,9 +825,9 @@ session_start();
 
 
 
-                                            </div>
+                                           
 
-                                      </div>
+                                     
                                       
                                           
                                       

@@ -1,7 +1,8 @@
 <?php
 
 
-  
+    header('Content-Type: text/html; charset=UTF-8');
+    
     include_once("../MODELO/clsUsuario.php");
   
     /*--------------------------------------------*/
@@ -42,6 +43,29 @@ session_start();
 
           else if(isset($_GET["cerrar"])){
                $procesar=4;
+          }
+
+          else if(isset($_POST["Editar"])){
+
+              $nombre = $_POST["nom"];
+              $apellido = $_POST["ape"];
+              $correo = $_POST["ema"];
+              $email = $_SESSION['email_usuario'];
+
+              $carpeta = "../img/Usuarios/";
+              opendir($carpeta);
+              $ruta = $_SESSION['ruta'];
+              copy($_FILES['files']['tmp_name'],$ruta);
+
+              $procesar=6;
+          }
+
+      
+
+          else if(isset($_POST["EditarC"])){
+            $clave = $_POST["ncon"];
+            $correo = $_SESSION['email_usuario'];
+            $procesar = 7;
           }
 
           else{
@@ -86,6 +110,7 @@ session_start();
               $_SESSION["tipo_usuario"] = $datos[5];
               $_SESSION["nombre_usuario"] = $datos[1]; 
               $_SESSION["apellido_usuario"] = $datos[2];
+              $_SESSION["clave"] = $datos[4];
               $_SESSION["ruta"] = $datos[6];
               
               echo "<script language='javascript'>window.location.href='../VISTA/Usuario.php';</script>";
@@ -98,14 +123,51 @@ session_start();
 
              case 4:
 
-             $_SESSION["email_usuario"] = ""; 
+              $_SESSION["email_usuario"] = ""; 
               $_SESSION["tipo_usuario"] = "";
               $_SESSION["nombre_usuario"] = ""; 
               $_SESSION["apellido_usuario"] = "";
+               $_SESSION["clave"] = "";
               $_SESSION["ruta"] = "";
               
               echo "<script language='javascript'>window.location.href='../VISTA/Principal.php';</script>";
 
+             break;
+
+             case 6:
+
+             $lobjUsuario=new clsUsuario();
+
+             $resultado = $lobjUsuario->modificar($nombre,$apellido,$correo,$email);
+
+             if($resultado){
+
+                $_SESSION['email_usuario'] = $correo;
+                $_SESSION["nombre_usuario"] = $nombre; 
+                $_SESSION["apellido_usuario"] = $apellido;
+                
+
+             }
+
+           
+             break;
+
+
+             case 7:
+
+             $lobjUsuario=new clsUsuario();
+
+             $resultado = $lobjUsuario->modificarClaveA($correo,$clave);
+
+             if($resultado){
+
+                $_SESSION["clave"] = $clave;
+               
+                return 1;
+
+             }else return 0;
+
+                   
              break;
 
       }
@@ -116,3 +178,4 @@ session_start();
 
 
 ?>
+

@@ -975,7 +975,7 @@ div[data-role="editor-toolbar"] {
 }
 /*----*/
 .page-header {
-  margin: 12px 0 20px;
+  margin: 6px 0 20px;
   border-bottom: none;
   opacity: 0.7;
   text-transform: uppercase;
@@ -2691,8 +2691,8 @@ ul.ft-link li a i {
 .profile-widget img {
    border-radius: 50%;
    -webkit-border-radius: 50%;
-    width: 62px;
-    height: 62px;
+    width: 7em;
+    height: 7em;
     /*display: inline-block;*/
 }
 
@@ -2800,6 +2800,7 @@ ul.ft-link li a i {
     border-right:1px solid #e6e6e6 ;
 	border-bottom:1px solid #e6e6e6 ;
     display: inline-block;
+
 }
 .weather-category ul  li {
     display: inline-block;
@@ -3516,7 +3517,7 @@ ul.inbox-pagination li {
     color: #fff;
     text-align: center;
     font-style: italic;
-    padding: 40px 110px;
+    padding: 20px 110px;
     
     font-size: 16px;
     font-weight: 300;
@@ -5150,14 +5151,14 @@ span.customSelect.changed {
 
 .verdeoscuroimg{
     
-    background-image: #688A7E;
-    color: #688A7E;
+    background-image: #688A7E !important;
+    color: #688A7E !important;
    
 }
 
 .rojoimg{
-    background-image: red;
-    color: red;
+    background-image: red !important;
+    color: red !important;
 }
 
 .cancelaredi{
@@ -5215,3 +5216,28 @@ span.customSelect.changed {
 }
 
 */
+
+#cabecera-perfil ul:hover{
+    color: #36464D !important;
+    background: #FFF none repeat scroll 0% 0% !important;
+    border-color: #36464D !important;
+}
+
+#cabecera-perfil-img{
+
+    margin: 1.5em;
+}
+
+#info-perfil{
+    margin-right: 10em;
+    margin-left: 3em;
+}
+
+#list{
+    float:right;
+}
+
+#cabecera-perfil i{
+    font-size: 2em;
+}
+

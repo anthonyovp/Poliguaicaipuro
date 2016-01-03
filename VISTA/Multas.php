@@ -1181,29 +1181,6 @@ session_start();
 
       //custom select box
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
-    
-    /* ---------- Map ---------- */
-  $(function(){
-    $('#map').vectorMap({
-      map: 've_mill_en',
-      series: {
-        regions: [{
-          values: gdpData,
-          scale: ['#000', '#000'],
-          normalizeFunction: 'polynomial'
-        }]
-      },
-   backgroundColor: '#8D8D8D',
-      onLabelShow: function(e, el, code){
-        el.html(el.html()+' (GDP - '+gdpData[code]+')');
-      }
-    });
-  });
-
-
 
   
 

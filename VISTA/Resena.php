@@ -336,7 +336,7 @@ session_start();
         <div class="col-lg-12">
           <p class="text-right"><a class="" href="#modalp">&nbsp;<i class="glyphicon glyphicon-question-sign"></i>Ayuda</a> </p>
           <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;Funcionarios
+            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;Reseñas
                           
           </ol>
         </div>
@@ -404,7 +404,7 @@ session_start();
     <div class="modalbox movedown">
         
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Registrar Funcionarios</h4></center>
+        <center><h4>Registrar Reseña</h4></center>
        
         <p>
           Ubica en la parte superior-derecha el botón azul que dice agregar y haz clic, tal como se explica en la siguiente imagen:
@@ -479,7 +479,7 @@ session_start();
   <div id="modal6" class="modalmask">
     <div class="modalbox movedown">
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Consultar Funcionarios</h4></center>
+        <center><h4>Consultar Reseña</h4></center>
         <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a consultar, 
           notarás que el Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
 
@@ -532,7 +532,7 @@ session_start();
   <div id="modal8" class="modalmask">
     <div class="modalbox movedown">
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Modificar Funcionarios</h4></center>
+        <center><h4>Modificar Reseña</h4></center>
         <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a modificar, 
           notarás que el Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
 
@@ -691,7 +691,7 @@ session_start();
         <div class="col-lg-12 col-md-12">  
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h2><i class="fa fa-flag-o red"></i><strong>Funcionarios</strong></h2>
+              <h2><i class="fa fa-flag-o red"></i><strong>Reseña</strong></h2>
               <div class="panel-actions">
                 <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal"> Agregar&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
                 
@@ -727,7 +727,7 @@ session_start();
                               <th>Segundo Nombre</th>                   
                               <th>Primer Apellido</th>
                               <th>Segundo Apellido</th>
-                              <th>Credencial</th>
+                              
                               <th>Acci&oacute;n<th>
                               
                            
@@ -741,7 +741,7 @@ session_start();
                             <td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>
                             <td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>                            
                             <td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>
-                            <td class = 'verdeoscuroimg' > Ejem.Credencial </td>
+                            
                             <td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>
                           </tr>   
 
@@ -767,7 +767,7 @@ session_start();
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <center><h4 class="modal-title" id="myModalLabel">Registro de Funcionario</h4></center>
+                            <center><h4 class="modal-title" id="myModalLabel">Registro de Reseña</h4></center>
                           </div>
                           <div class="modal-body">
                                             
@@ -775,7 +775,7 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Funcionario.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Reseña.php">
                                       <div class="form-group ">
                                           <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
                                             <div class="col-lg-9">
@@ -838,18 +838,7 @@ session_start();
                                               
                                           </div>
                                       </div>
-                                      <div class="form-group ">
-                                          <label for="credencial" class="control-label col-lg-3">Credencial <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="credencial" type="text" name="credencial" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
+                                      
                                      
                                       <div class="form-group">
                                           <div class="col-lg-offset-3 col-lg-9">
@@ -962,8 +951,7 @@ session_start();
                nuevaFila+="<td id = 'nom1_td_"+resultado[index].cedula_per+"'> "+resultado[index].nombre1_per+" </td>";                            
                nuevaFila+="<td id = 'nom2_td_"+resultado[index].cedula_per+"'> "+resultado[index].nombre2_per+" </td>";
                nuevaFila+="<td id = 'ape1_td_"+resultado[index].cedula_per+"'> "+resultado[index].apellido1_per+" </td>";                            
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].cedula_per+"'> "+resultado[index].apellido2_per+" </td>";   
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].cedula_per+"'> "+resultado[index].credencial_fun+" </td>";           
+               nuevaFila+="<td id = 'ape2_td_"+resultado[index].cedula_per+"'> "+resultado[index].apellido2_per+" </td>";             
                nuevaFila+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
               nuevaFila+="</tr>";
               nuevaFila+="<tr id='cambio"+resultado[index].cedula_per+"'  class = 'oculto' >";
@@ -973,7 +961,6 @@ session_start();
               nuevaFila+="<td><input id = 'nom2_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].nombre2_per+"' required /> </td>"; 
               nuevaFila+="<td><input id = 'ape1_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].apellido1_per+"' required /> </td>"; 
               nuevaFila+="<td><input id = 'ape2_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].apellido2_per+"' required /> </td>";
-              nuevaFila+="<td><input id = 'cre_"+resultado[index].cedula_per+"' size = '12' minlength='5' class = 'disabled' disabled='' type='text' value = '"+resultado[index].credencial_fun+"' required /> </td>";
               nuevaFila+="<td> "+"<button id = '"+resultado[index].cedula_per+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'submit' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
               nuevaFila+="<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
               nuevaFila+="</tr>";
@@ -1029,7 +1016,6 @@ session_start();
                       trd+="<td id = 'nom2_td_"+cedula+"'> "+nom2+" </td>";
                       trd+="<td id = 'ape1_td_"+cedula+"'> "+ape1+" </td>";                            
                       trd+="<td id = 'ape2_td_"+cedula+"'> "+ape2+" </td>";
-                      trd+="<td id = 'cre_td_"+cedula+"'> "+cre+" </td>";
                       trd+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
                       
                       
@@ -1076,55 +1062,20 @@ session_start();
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>";
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>";                            
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Credencial </td>";
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>";
             primeraFila += "</tr>";
             $("#tabla").append(primeraFila);
+            $("#cargando").html("");
 
           }
          
         });
 
 
-              
-          //carousel
          
-          $("#owl-slider").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true
-
-          });
+         
       });
 
-      //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
-    
-    /* ---------- Map ---------- */
-  $(function(){
-    $('#map').vectorMap({
-      map: 've_mill_en',
-      series: {
-        regions: [{
-          values: gdpData,
-          scale: ['#000', '#000'],
-          normalizeFunction: 'polynomial'
-        }]
-      },
-   backgroundColor: '#8D8D8D',
-      onLabelShow: function(e, el, code){
-        el.html(el.html()+' (GDP - '+gdpData[code]+')');
-      }
-    });
-  });
-
-
-
-  
 
 
 

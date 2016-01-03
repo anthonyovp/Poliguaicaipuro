@@ -53,7 +53,7 @@
 			$this->objDatos= new clsDatos();
 		   $this->objDatos->conectar();
 		   
-	       $sql = "INSERT INTO usuario(nombre1_usu,apellido1_usu,correo_usu,clave_usu,tipo_usu,ruta) VALUES ('$nombre','$apellido','$correo','$clave','$tipo','$ruta')";
+	       $sql = "INSERT INTO Usuario(nombre1_usu,apellido1_usu,correo_usu,clave_usu,tipo_usu,ruta) VALUES ('$nombre','$apellido','$correo','$clave','$tipo','$ruta')";
 	      
 	       
 	       $res=$this->objDatos->ejecutar($sql);
@@ -77,6 +77,37 @@
 	   		// $this->objDatos->desconectar();
 	   	   return  $this->objDatos->resultado($datos);
     	}
+
+    	public function consultarUsuario2(){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM Usuario  WHERE correo_usu = '$this->correo'";
+
+	   		$datos =  $this->objDatos->consulta_query($sql);
+	   		// $this->objDatos->desconectar();
+	   	   return  $this->objDatos->resultado($datos);
+    	}
+
+    	
+
+    	public function modificar($nombre,$apellido,$correo,$email){
+	       
+			$this->objDatos= new clsDatos();
+		   $this->objDatos->conectar();
+		   
+	       $sql = "UPDATE Usuario  SET nombre1_usu = '$nombre', apellido1_usu = '$apellido', correo_usu = '$correo' WHERE correo_usu = '$email'";
+	       $ruta = "Usuario";
+	       
+	       $resul = $this->objDatos->ejecutar3($sql,$ruta);
+	      
+		  
+		  if($resul == 1){
+
+		  	return 1;
+		  	
+		  }else return 0;
+    	} 
 		
 		public function iniciarsesion($correo,$clave){
 	       
@@ -98,31 +129,42 @@
 	   	   
     	}
 
-		/*
-    	public function consultarProcedimientoNombre(){
-	       
-		  	$this->objDatos= new clsDatos();
-		    $this->objDatos->conectar();
-	      	$sql = "SELECT * FROM Procedimiento  WHERE nombre_pro like '$this->correo%'";
 
-	   		$datos =  $this->objDatos->consulta_query($sql);
-	   		// $this->objDatos->desconectar();
-	   	   return  $this->objDatos->resultado($datos);
+    	public function verificarClaveA($correo,$clave){
+    		
+    		$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM Usuario  WHERE correo_usu='$correo' and clave_usu='$clave'";
+
+	   
+
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->cantidad($sql);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
     	}
 
-    	public function modificarProcedimiento(){
-	       
-		  	$this->objDatos= new clsDatos();
+    	public function modificarClaveA($correo,$clave){
+    		
+    		$this->objDatos= new clsDatos();
 		    $this->objDatos->conectar();
-	      	$sql = " UPDATE Procedimiento SET  nombre_pro = '$this->nombre' , puntaje_pro = '$this->puntaje'  WHERE codigo_pro = $this->codigo ";
-	      	//echo "<script language='javascript'> console.log($sql)</script>"; da error a la consulta aunque llamen a otra funcion 
+	      	$sql = "UPDATE Usuario SET clave_usu = '$clave' WHERE correo_usu='$correo' ";
 
-	   		$datos =  $this->objDatos->consulta_query($sql);
-	   		// $this->objDatos->desconectar();
-	   	   return  $datos;
+	   
+
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->ejecutar3($sql,"Perfil");
+
+	   	   
+	   	   		return $respuesta;
+	   	   
     	}
 
-*/
+		
 
 
 	}

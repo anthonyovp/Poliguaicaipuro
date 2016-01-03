@@ -26,6 +26,7 @@
         //datos del acta
         $numero = $_POST['numero'];
         $fecha = $_POST['fecha'];
+        $hora = $_POST['hora'];
         $tipo = $_POST['tipo'];
         $comentario = $_POST['comentario'];
         $unidad = $_POST['unidad'];
@@ -50,6 +51,7 @@
         $codigo =$_POST["cod"]; 
         $num = $_POST["num"];
         $fec = $_POST["fec"];
+        $hor = $_POST["hor"];
         $tip = $_POST["tip"];
         $uni = $_POST["uni"];
         $sec = $_POST["sec"];
@@ -67,7 +69,7 @@
             
             
             $lobjActa = new clsActa();
-            $cod_act = $lobjActa->incluirActa($numero,$fecha,$tipo,$comentario,$unidad,$sector,$dependencia,$cod_pro);
+            $cod_act = $lobjActa->incluirActa($numero,$fecha,$hora,$tipo,$comentario,$unidad,$sector,$dependencia,$cod_pro);
 
             if ( !empty($_POST["cod_fun"]) && is_array($_POST["cod_fun"]) ) { 
               

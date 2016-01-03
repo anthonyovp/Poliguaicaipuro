@@ -102,6 +102,7 @@ CREATE TABLE Acta
 	codigo_act INTEGER NOT NULL AUTO_INCREMENT,
 	numero_act INTEGER NOT NULL,
 	fecha_act VARCHAR(10) NOT NULL,
+	hora_act VARCHAR(10) NOT NULL,
 	tipo_act VARCHAR(50) NOT NULL,
 	comentario_act TEXT ,
 	unidad_act VARCHAR(50) NOT NULL,

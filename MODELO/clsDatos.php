@@ -72,6 +72,8 @@
     
 		    $this->consulta = mysqli_query($this->conexion,$sqlx);
 			
+			
+
 		    if ($this->consulta) {
 		    	 echo "<script language='javascript'> alert('Registro Exitoso!'); setTimeout('window.history.go(-1)',1000);</script>"; 
 		    	 return 1;
@@ -80,8 +82,9 @@
 		    }
 		    else {
 			    echo '<meta http-equiv="Refresh" content="1;url=../VISTA/Usuario.php">';
-			    echo mysql_error();
+			    //echo mysql_error();
 		        echo "<script>alert('Proceso No Realizado')</script>"; 
+		        return 0;
 		    }
 		}
 
@@ -95,9 +98,30 @@
 		    	echo mysql_error();
 		       echo "<script>alert('Proceso No Realizado')</script>";
 
+		     	return 0;
+		    }else return 1;
+		   
+		}
+
+		public function ejecutar3($sqlx,$ruta){
+    
+		    $this->consulta = mysqli_query($this->conexion,$sqlx);
+			
+			
+
+		    if ($this->consulta) {
+		    	echo "<script language='javascript'>alert('Proceso Realizado Correctamente');window.location.href='../VISTA/".$ruta.".php';</script>";
+		    	 return 1;
+
 		     
 		    }
-		   
+		    else {
+			    
+			    echo mysql_error();
+		        echo "<script>alert('Proceso No Realizado')</script>"; 
+		        echo '<meta http-equiv="Refresh" content="1;url=../VISTA/Usuario.php">';
+		        return 0;
+		    }
 		}
 
 
@@ -116,8 +140,10 @@
 
         public function cantidad($sql){
 		     
+		     
 		     $cantidad = mysqli_query($this->conexion,$sql);
 		     $total= mysqli_num_rows($cantidad);
+		     
 
 
 
@@ -132,8 +158,8 @@
     	}
 
     	public function consulta_query($sql){
-
-    		 //echo "<script>alert('"+$sql+"')</script>";
+    		//echo $sql;
+    		//echo "<script> alert('existe".$sql."');</script>";
 
     		return mysqli_query($this->conexion,$sql);
     		
@@ -254,7 +280,7 @@
     	protected function resultadoinicio($datos){
     		
 		     $resultado = mysqli_fetch_array($datos);
-		   
+		   	
 		     return $resultado;
 /*
     		$codigo2 = "";

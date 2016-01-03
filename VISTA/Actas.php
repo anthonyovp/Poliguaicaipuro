@@ -679,9 +679,10 @@ session_start();
                           <thead>
                             <tr class="success">
                               
-                              <th>N&uacute;mero</th>
+                              <th>N&deg;</th>
                               <th>C&oacute;digo</th>
                               <th>Fecha</th>
+                              <th>Hora</th>
                               <th>Tipo</th>
                               <th>Procedimiento</th>
                               <th>Funcionarios</th>                   
@@ -692,13 +693,14 @@ session_start();
                             </tr>
                           </thead>
                           <tr>
-                            <td class = 'verdeoscuroimg' > Ejem.N&uacute;mero </td> 
+                            <td class = 'verdeoscuroimg' > Ejem.N&deg; </td> 
                             <td class = 'verdeoscuroimg' > Ejem.C&oacute;digo </td> 
                             <td class = 'verdeoscuroimg' > Ejem.Fecha </td>    
-                            <td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>              
-                            <td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>                          
-                            <td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>                            
-                            <td class = 'verdeoscuroimg' > Ejem.Placa </td>
+                            <td class = 'verdeoscuroimg' > Ejem.Hora </td>
+                            <td class = 'verdeoscuroimg' > Ejem.Tipo </td>              
+                            <td class = 'verdeoscuroimg' > Ejem.Procedimiento </td>                          
+                            <td class = 'verdeoscuroimg' > Ejem.Funcionarios </td>                            
+                            <td class = 'verdeoscuroimg' > Ejem.Sector </td>
                             <td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>
                             
                             
@@ -821,9 +823,10 @@ session_start();
                  $("#tabla tr").remove();
                  var cabecera = "<thead>";
                     cabecera += "  <tr class=success>";              
-                    cabecera += "    <th>N&uacute;mero</th>";
+                    cabecera += "    <th>N&deg;</th>";
                     cabecera += "    <th>C&oacute;digo</th>";
                     cabecera += "    <th>Fecha</th>";
+                    cabecera += "    <th>Hora</th>";
                     cabecera += "    <th>Tipo</th>";
                     cabecera += "    <th>Sector</th>";
                     cabecera += "    <th>Funcionarios</th>";                   
@@ -838,7 +841,8 @@ session_start();
                var nuevaFila="<tr id = '"+index+"'>";
                nuevaFila+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";      
                nuevaFila+="<td > "+resultado[index].numero_act+" </td>";              
-               nuevaFila+="<td > "+resultado[index].fecha_act+" </td>";                            
+               nuevaFila+="<td > "+resultado[index].fecha_act+" </td>";  
+               nuevaFila+="<td > "+resultado[index].hora_act+" </td>";                          
                nuevaFila+="<td > "+resultado[index].tipo_act+" </td>";
                nuevaFila+="<td > "+resultado[index].sector_act+" </td>";                             
                nuevaFila+="<td > "+resultado[index].cantidad_per+" </td>"; 
@@ -869,9 +873,10 @@ session_start();
                 var indice = $(this).attr("id");          
                 var vermas = " <thead>";
                     vermas += " <tr class='success'>";                                    
-                    vermas += "  <th>N&uacute;mero</th>";
-                    vermas += "  <th colspan = '2'>C&oacute;digo  Proc.</th>";
+                    vermas += "  <th>N&deg;</th>";
+                    vermas += "  <th colspan = '1'>C&oacute;digo  Proc.</th>";
                     vermas += "  <th>Fecha</th>";
+                    vermas += "  <th>Hora</th>";
                     vermas += "  <th>Tipo</th>";
                     vermas += "  <th>Unidad</th>";
                     vermas += "  <th>Sector</th>";
@@ -881,8 +886,9 @@ session_start();
                     vermas += " </thead>";
                     vermas += "<tr id = 'acta' class = 'visible'>";
                     vermas += "  <td>"+resultado[indice].numero_act+"</td>";
-                    vermas += "  <td id = 'procedimiento' colspan = '2'>"+resultado[indice].cod_pro+"</td>";
+                    vermas += "  <td id = 'procedimiento' colspan = '1'>"+resultado[indice].cod_pro+"</td>";
                     vermas += "  <td>"+resultado[indice].fecha_act+"</td>";
+                    vermas += "  <td>"+resultado[indice].hora_act+"</td>";
                     vermas += "  <td>"+resultado[indice].tipo_act+"</td>";
                     vermas += "  <td>"+resultado[indice].unidad_act+"</td>";
                     vermas += "  <td>"+resultado[indice].sector_act+"</td>";
@@ -890,8 +896,9 @@ session_start();
                     vermas += "</tr>";
                     vermas += "<tr class=' oculto'>";
                     vermas += "  <td><input id = 'num_"+resultado[indice].codigo_act+"' size = '8' minlength='1'   type='text' value = '"+resultado[indice].numero_act+"'  required /></td>";
-                    vermas += "  <td colspan = '2'><input id = 'pro_"+resultado[indice].codigo_act+"' size = '8' minlength='1'   type='text' value = '"+resultado[indice].cod_pro+"'  required /></td>";
+                    vermas += "  <td colspan = '1'><input id = 'pro_"+resultado[indice].codigo_act+"' size = '8' minlength='1'   type='text' value = '"+resultado[indice].cod_pro+"'  required /></td>";
                     vermas += "  <td><input id = 'fec_"+resultado[indice].codigo_act+"' size = '12' minlength='6' type='text' value = '"+resultado[indice].fecha_act+"' required /></td>";
+                    vermas += "  <td><input id = 'hor_"+resultado[indice].codigo_act+"' size = '10' minlength='6' type='text' value = '"+resultado[indice].hora_act+"' required /></td>";
                     vermas += "  <td><input id = 'tip_"+resultado[indice].codigo_act+"' size = '14' minlength='1' type='text' value = '"+resultado[indice].tipo_act+"' required /></td>";
                     vermas += "  <td><input id = 'uni_"+resultado[indice].codigo_act+"' size = '12' minlength='1' type='text' value = '"+resultado[indice].unidad_act+"' required /></td>";
                     vermas += "  <td><input id = 'sec_"+resultado[indice].codigo_act+"' size = '18' minlength='1' type='text' value = '"+resultado[indice].sector_act+"' required /></td>";
@@ -1019,6 +1026,7 @@ session_start();
 
                       var num = document.getElementById('num_'+cod).value;
                       var fec = document.getElementById('fec_'+cod).value;
+                      var hor = document.getElementById('hor_'+cod).value;
                       var tip = document.getElementById('tip_'+cod).value;
                       var uni = document.getElementById('uni_'+cod).value;
                       var sec = document.getElementById('sec_'+cod).value;
@@ -1031,8 +1039,9 @@ session_start();
                       var act = "";      
                       
                       act += "  <td>"+num+"</td>";
-                      act += "  <td colspan = '2'>"+pro+"</td>";
+                      act += "  <td colspan = '1'>"+pro+"</td>";
                       act += "  <td>"+fec+"</td>";
+                      act += "  <td>"+hor+"</td>";
                       act += "  <td>"+tip+"</td>";
                       act += "  <td>"+uni+"</td>";
                       act += "  <td>"+sec+"</td>";
@@ -1047,7 +1056,7 @@ session_start();
                       
 
                       
-                      $.post("../CONTROLADOR/Controlador_Acta.php",{cod:cod,num: num, fec: fec, tip: tip, uni: uni, sec: sec, dep: dep, com: com, pro: pro},function(){
+                      $.post("../CONTROLADOR/Controlador_Acta.php",{cod:cod,num: num, fec: fec, hor:hor, tip: tip, uni: uni, sec: sec, dep: dep, com: com, pro: pro},function(){
 
                         $(".editando").hide("slow",function(){
                             $(".editar").show();
@@ -1106,7 +1115,7 @@ session_start();
             //$('#tabla').children( 'tr:not(:first)' ).remove();
             $('tr:not(:first)').remove();
             var primeraFila = "<tr>";
-            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>";
+            primeraFila +="<td class = 'verdeoscuroimg'> N&deg; </td>";
             primeraFila +="<td class = 'verdeoscuroimg'> Ejem.C&oacute;digo </td>";
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.fecha </td>";      
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>";              

@@ -803,6 +803,16 @@ session_start();
                                               </div>
                                           </div>
                                       </div>
+
+                                      <div class="form-group ">
+                                          <label for="hora" class="control-label col-lg-3"> Hora <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                <input class="form-control " id="hora" type="time" name="hora" placeholder="00:00 am" required />
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                              </div>
+                                          </div>
+                                      </div>
                                       
                                       <div class="form-group ">
                                           <label for="tipo" class="control-label col-lg-3"> Tipo <span class="required">*</span></label>

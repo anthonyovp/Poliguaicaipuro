@@ -105,6 +105,19 @@
 	   	   return;
     	} 
 
+    	public function incluirResena($id,$fechaN,$direccion){
+	       // $objDatos = new clsDatos();
+			$this->objDatos= new clsDatos();
+		   $this->objDatos->conectar();
+		   
+	       $sql = "INSERT INTO Detenido(fecha_nac_det,direccion_det,cod_per) VALUES ('$fechaN','$direccion','$id')";
+	       $this->objDatos->ejecutar2($sql);
+		   $this->objDatos->desconectar();
+		  
+		   
+	   	   return;
+    	} 
+
     	public function incluirMultado($cod_per){
 
     		$this->objDatos= new clsDatos();

@@ -781,7 +781,7 @@ session_start();
                               <div class="form">
                                   <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="../CONTROLADOR/Controlador_Multa.php">
                                     
-                                    <input class="form-control hide" id="cod_fun" name="cod_fun" minlength="5" type="text" value = "1" required />
+                                    <input class="form-control hide" id="cod_fun" name="cod_fun" minlength="1" type="text" value = "1" required />
                                     <div id = "div1">
                                       <div class="form-group ">
                                           <label for="numero" class="control-label col-lg-3"> N&uacute;mero <span class="required">*</span></label>

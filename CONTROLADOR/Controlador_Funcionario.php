@@ -54,7 +54,7 @@
       switch($procesar) {
         case 1:
            $lobjFuncionario=new clsPersona();
-           $id = $lobjFuncionario->incluirPersona($cedula,$nombre1,$nombre2,$apellido1,$apellido2,$credencial);
+           $id = $lobjFuncionario->incluirPersona($cedula,$nombre1,$nombre2,$apellido1,$apellido2);
            $lobjFuncionario->incluirFuncionario($id,$credencial);
            break;
 

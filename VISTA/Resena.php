@@ -692,10 +692,7 @@ session_start();
           <div class="panel panel-default">
             <div class="panel-heading">
               <h2><i class="fa fa-flag-o red"></i><strong>Reseña</strong></h2>
-              <div class="panel-actions">
-                <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal"> Agregar&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-                
-              </div>
+            
 
             </div>
             <div  class="panel-body ">
@@ -734,7 +731,7 @@ session_start();
 
                             </tr>
                           </thead>
-                          <tr>
+                          <tr id = "ejemplo">
                             <td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>      
                             <td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>              
                             <td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>                          
@@ -745,7 +742,11 @@ session_start();
                             <td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>
                           </tr>   
 
-                      </table>       
+                          
+
+                      </table>    
+
+                      <button type="button" class="btn btn-default disabled center-block"  data-toggle="modal" data-target="#myModal" id = "seleccionar"> Seleccionar &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span></button>       
                 </div>
 
               
@@ -775,7 +776,9 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Reseña.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Resena.php">
+                                      
+                                    <input class="form-control hide" id="cod_act" name="cod_act" minlength="1" type="text" value = "" required />
                                       <div class="form-group ">
                                           <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
                                             <div class="col-lg-9">
@@ -832,6 +835,30 @@ session_start();
                                             <div class="input-group">
                                                   
                                                   <input class="form-control " id="apellido2" type="text" name="apellido2" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="fechaN" class="control-label col-lg-3">Fecha de Nacimiento <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="fechaN" type="date" name="fechaN" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="direccion" class="control-label col-lg-3">Direcci&oacute;n <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="direccion" type="text" name="direccion" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
@@ -935,35 +962,48 @@ session_start();
           if(dato.length > 0){
              //console.log(dato);
             $.ajax({
-              url:"../CONTROLADOR/Controlador_ConsultarF.php",
+              url:"../CONTROLADOR/Controlador_Acta.php",
               method: "GET",              
               data:{"dato":dato},
+              error: function( jqXHR,  textStatus,  errorThrown) {
+                  alert('Error Ajax Procedimientos');
+                  alert(textStatus);
+                  console.log(textStatus);
+              },
               success: function(resultado){
                  //$("#tabla").empty();
 
                 
-                 $("#tabla tr td").remove();
+                 $("#tabla tr").remove();
+                 var cabecera = "<thead>";
+                    cabecera += "  <tr class=success>";              
+                    cabecera += "    <th>N&deg;</th>";
+                    cabecera += "    <th>C&oacute;digo</th>";
+                    cabecera += "    <th>Fecha</th>";
+                    cabecera += "    <th>Hora</th>";
+                    cabecera += "    <th>Tipo</th>";
+                    cabecera += "    <th>Sector</th>";
+                    cabecera += "    <th>Funcionarios</th>";                   
+                    cabecera += "    <th>Procedimiento</th>";
+                    cabecera += "  </tr>";
+                    cabecera += "</thead>";
+                  $("#tabla").prepend(cabecera);  
+
                 $.each(resultado,function(index){  
                                         
-               var nuevaFila="<tr id='cambiar"+resultado[index].cedula_per+"'>";
+               var nuevaFila="<tr id ='"+resultado[index].codigo_act+"'>";
                nuevaFila+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";      
-               nuevaFila+="<td id = 'ci_td_"+resultado[index].cedula_per+"' > "+resultado[index].cedula_per+" </td>";              
-               nuevaFila+="<td id = 'nom1_td_"+resultado[index].cedula_per+"'> "+resultado[index].nombre1_per+" </td>";                            
-               nuevaFila+="<td id = 'nom2_td_"+resultado[index].cedula_per+"'> "+resultado[index].nombre2_per+" </td>";
-               nuevaFila+="<td id = 'ape1_td_"+resultado[index].cedula_per+"'> "+resultado[index].apellido1_per+" </td>";                            
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].cedula_per+"'> "+resultado[index].apellido2_per+" </td>";             
-               nuevaFila+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
+               nuevaFila+="<td > "+resultado[index].numero_act+" </td>";              
+               nuevaFila+="<td > "+resultado[index].fecha_act+" </td>";  
+               nuevaFila+="<td > "+resultado[index].hora_act+" </td>";                          
+               nuevaFila+="<td > "+resultado[index].tipo_act+" </td>";
+               nuevaFila+="<td > "+resultado[index].sector_act+" </td>";                             
+               nuevaFila+="<td > "+resultado[index].cantidad_per+" </td>"; 
+               nuevaFila+="<td > "+resultado[index].nombre_pro+" </td>";  
+                        
+               
               nuevaFila+="</tr>";
-              nuevaFila+="<tr id='cambio"+resultado[index].cedula_per+"'  class = 'oculto' >";
-              nuevaFila+="<td  id = '"+(index+1)+"' > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";
-              nuevaFila+="<td><input id = 'ci_"+resultado[index].cedula_per+"' size = '8' minlength='5' class = 'disabled' disabled='' type='text' value = '"+resultado[index].cedula_per+"' readonly='readonly'  required /> </td>";
-              nuevaFila+="<td><input id = 'nom1_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].nombre1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'nom2_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].nombre2_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape1_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].apellido1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape2_"+resultado[index].cedula_per+"' size = '18' minlength='5' type='text' value = '"+resultado[index].apellido2_per+"' required /> </td>";
-              nuevaFila+="<td> "+"<button id = '"+resultado[index].cedula_per+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'submit' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
-              nuevaFila+="<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-              nuevaFila+="</tr>";
+              
 
             $("#tabla").append(nuevaFila);
                  
@@ -980,73 +1020,31 @@ session_start();
                         
                     }
 
-                    $(".editar").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").next("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                     $(".cancelaredi").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                    $(".aceptaredi").on( "click", function() {
-                      
-                      
-                      var elemento = $(this);
-                      var cedula = $(this).attr("id");
-                      var index = $(this).closest("tr").children('td:first').attr("id");               
-                      var nom1 = document.getElementById('nom1_'+cedula).value;
-                      var nom2 = document.getElementById('nom2_'+cedula).value;
-                      var ape1 = document.getElementById('ape1_'+cedula).value;
-                      var ape2 = document.getElementById('ape2_'+cedula).value;
-                      var cre = document.getElementById('cre_'+cedula).value;
-                      var trd = "";
-                      trd+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+index+"</td>";      
-                      trd+="<td id = 'ci_td_"+cedula+"' > "+cedula+" </td>";              
-                      trd+="<td id = 'nom1_td_"+cedula+"'> "+nom1+" </td>";                            
-                      trd+="<td id = 'nom2_td_"+cedula+"'> "+nom2+" </td>";
-                      trd+="<td id = 'ape1_td_"+cedula+"'> "+ape1+" </td>";                            
-                      trd+="<td id = 'ape2_td_"+cedula+"'> "+ape2+" </td>";
-                      trd+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
-                      
-                      
-                      $.post("../CONTROLADOR/Controlador_ModificarF.php",{cedula: cedula, nom1: nom1, nom2: nom2, ape1: ape1, ape2: ape2},function(){
-
-                        elemento.closest("tr").hide("slow",function(){
-                          $(this).closest("tr").prev("tr").html(trd);
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                            $(".editar").on( "click", function() {
-                            
-                            $(this).closest("tr").hide("slow",function(){
-                                 $(this).closest("tr").next("tr").show("fast");
-                                
-                            
-                            });
-                          });
-
-                      });
-
-
-                      });
-
-                        
-
-                    });
+                $('#tabla tr td').click(function () {
+                  var a = $(this).parent('tr');
+                  ida = a.attr("id");
 
                   
+                  a.css('background-color', '#688A7E');
+                  a.css('color', '#fff');
+                  $('#tabla tr td').click(function () {
+                    var b = $(this).parent('tr');
+                    //ida = a.attr("id"); error
+                    ida = b.attr("id");
+                    a.css('background-color', '#fff');
+                    a.css('color', '#797979');
+                    b.css('background-color', '#688A7E');
+                    b.css('color', '#fff');
                     
-                      
+                  });
+                   
+                    $("#cod_act").attr('value', ida);
+                    $("#seleccionar").removeClass("btn-default disabled");
+                    $("#seleccionar").addClass('btn-primary');
+                  
+                 
+                });
+
               }
               
             });

@@ -93,6 +93,7 @@
     
 		    $this->consulta = mysqli_query($this->conexion,$sqlx);
 			//echo "<script> alert('existe".$sqlx."');</script>";
+			
 		    if ($this->consulta == 0) {
 		    	//echo '<meta http-equiv="Refresh" content="1;url=../VISTA/Usuario.php">';
 		    	echo mysql_error();

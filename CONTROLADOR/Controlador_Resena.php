@@ -11,6 +11,7 @@
 
 	
 		include_once("../MODELO/clsPersona.php");
+    include_once("../MODELO/clsActa.php");
 		
 		/*--------------------------------------------*/
 
@@ -24,7 +25,9 @@
         $nombre2 = $_POST['nombre2']; 
         $apellido1 = $_POST['apellido1']; 
         $apellido2 = $_POST['apellido2'];
-
+        $fechaN = $_POST['fechaN'];
+        $direccion = $_POST['direccion'];
+        $cod_act = $_POST['cod_act'];
         $procesar=1;
 
       }
@@ -48,8 +51,15 @@
       switch($procesar) {
         case 1:
            $lobjResena=new clsPersona();
-           $id = $lobjResena->incluirPersona($cedula,$nombre1,$nombre2,$apellido1,$apellido2,$credencial);
-           $lobjResena->incluirResena($id,$credencial);
+           $id = $lobjResena->incluirPersona($cedula,$nombre1,$nombre2,$apellido1,$apellido2);
+           $lobjResena->incluirResena($id,$fechaN,$direccion);
+
+
+            $lobjActa = new clsActa();
+            $lobjActa->incluirActaPersona($cod_act,$id);
+
+            $lobjActa->finalizar();
+            
            break;
 
         case 2:

@@ -57,14 +57,6 @@ CREATE TABLE Vehiculo
 ) 
 ;
 
-CREATE TABLE Detencion
-(
-	codigo_det INTEGER NOT NULL AUTO_INCREMENT,
-	fecha_det DATE NOT NULL,
-	hora_det TIME NOT NULL,
-	PRIMARY KEY (codigo_det)
-) 
-;
 
 CREATE TABLE Funcionario
 (
@@ -124,18 +116,6 @@ CREATE TABLE Bitacora
 	cod_usu INTEGER NOT NULL,
 	PRIMARY KEY (codigo_bit),
 	FOREIGN KEY (cod_usu) REFERENCES Usuario (codigo_usu)
-) 
-;
-
-
-CREATE TABLE Detenido_Detencion
-(
-	cod_det_det INTEGER NOT NULL AUTO_INCREMENT,
-	cod_detenido INTEGER NOT NULL,
-	cod_detencion INTEGER NOT NULL,
-	PRIMARY KEY (cod_det_det),
-	FOREIGN KEY (cod_detencion) REFERENCES Detencion (codigo_det),
-	FOREIGN KEY (cod_detenido) REFERENCES Detenido (cod_det)
 ) 
 ;
 

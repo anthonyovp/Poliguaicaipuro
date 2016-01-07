@@ -3,6 +3,7 @@
 <?php 
 session_start();
 ?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -318,31 +319,29 @@ session_start();
               </ul>
                  </div>
       </aside>
-
               ';
             }
               ?>
-              </section>
               <!-- sidebar menu end-->
        
       <!--sidebar end-->
       
-      <!--main content start-->
-
-
+       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">            
+
+          <section class="wrapper"> 
+
               <!--overview start-->
         <div class="row">
         <div class="col-lg-12">
           <p class="text-right"><a class="" href="#modalp">&nbsp;<i class="glyphicon glyphicon-question-sign"></i>Ayuda</a> </p>
           <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;Rese&ntilde;a
+            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;Reseñas
                           
           </ol>
         </div>
       </div>
-      
+
 
  <!-- Comienzo Modales para manual de usuario-->
   <div id="modalp" class="modalmask">
@@ -357,12 +356,55 @@ session_start();
     </div>
   </div>
 
-      
+       <!-- Comienzo Modales para manual de usuario
+   <div id="modal1" class="modalmask">
+    <div class="modalbox movedown">
+        
+        
+        <p>Para Registrar un Funcionario dirígete al menú vertical ubicado en la parte izquierda de la pantalla y haz clic en  Gestionar Acta, tal como se explica en la siguiente imagen:
+        </p>
+        <center><img src="../img/Ayudafuncionario1.jpg" class="img img-responsive"></center>
+        <br>
+         <div class="row">
+          <div class="col-lg-6">
+            <p class="text-left"><a class="" href="#modalp">&nbsp;Anterior</a> </p>
+            
+          </div>
+          <div class="col-lg-6">
+            
+           <p class="text-right"><a class="" href="#modal2">&nbsp;Siguiente</a> </p>
+          </div>
+        </div>
+    </div>
+  </div>
+    
+  <div id="modal2" class="modalmask">
+    <div class="modalbox movedown">
+        <a href="#close" title="Close" class="close">X</a>
+        <br>
+        <p>A continuación se desplegará el menú, ubica la opción Funcionarios y haz clic, tal como se explica en la siguiente imagen:
+        </p>
+        <center><img src="../img/Ayudafuncionario2.jpg" class="img img-responsive"></center>
+        <br>
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="text-left"><a class="" href="#modal1">&nbsp;Anterior</a> </p>
+            
+          </div>
+          <div class="col-lg-6">
+            
+           <p class="text-right"><a class="" href="#modal3">&nbsp;Siguiente</a> </p>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+-->
   <div id="modal3" class="modalmask">
     <div class="modalbox movedown">
         
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Registrar Funcionarios</h4></center>
+        <center><h4>Registrar Reseña</h4></center>
        
         <p>
           Ubica en la parte superior-derecha el botón azul que dice agregar y haz clic, tal como se explica en la siguiente imagen:
@@ -437,7 +479,7 @@ session_start();
   <div id="modal6" class="modalmask">
     <div class="modalbox movedown">
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Consultar Funcionarios</h4></center>
+        <center><h4>Consultar Reseña</h4></center>
         <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a consultar, 
           notarás que el Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
 
@@ -490,7 +532,7 @@ session_start();
   <div id="modal8" class="modalmask">
     <div class="modalbox movedown">
         <a href="#close" title="Close" class="close">X</a>
-        <center><h4>Modificar Funcionarios</h4></center>
+        <center><h4>Modificar Reseña</h4></center>
         <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a modificar, 
           notarás que el Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
 
@@ -644,16 +686,13 @@ session_start();
                   </div>
               </div>
 
-      <div class="row">
+               <div class="row">
                 
         <div class="col-lg-12 col-md-12">  
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h2><i class="fa fa-flag-o red"></i><strong>Rese&ntilde;a</strong></h2>
-              <div class="panel-actions">
-                <button type="button" class="btn btn-primary"  onclick="location.href='Registrar Resena.php';" > Agregar&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-                
-              </div>
+              <h2><i class="fa fa-flag-o red"></i><strong>Reseña</strong></h2>
+            
 
             </div>
             <div  class="panel-body ">
@@ -671,7 +710,7 @@ session_start();
                       </div>
                             
                 </form>
-                <div   class = "">
+                <div  class = "">
 
                       <table class="table  table-hover" width="100%" id = "tabla">
 
@@ -679,43 +718,35 @@ session_start();
                           <thead>
                             <tr class="success">
                               
-                              <th>N&deg;</th>
-                              <th>Acta N&deg;</th>
-                              <th>Fecha</th>
-                              <th>Hora</th>
-                              <th>C&eacute;dula</th>
+                              <th>N&uacute;mero</th>
+                              <th>Cédula</th>
                               <th>Primer Nombre</th>
-                              <th>Segundo Nombre</th>
-                              <th>Primer Apellido</th>                   
-                              <th>Acci&oacute;n</th>
-             
+                              <th>Segundo Nombre</th>                   
+                              <th>Primer Apellido</th>
+                              <th>Segundo Apellido</th>
+                              
+                              <th>Acci&oacute;n<th>
+                              
+                           
 
                             </tr>
                           </thead>
-                          <tr>
-                            <td class = 'verdeoscuroimg' > Ejem.N&deg; </td> 
-                            <td class = 'verdeoscuroimg' > Ejem.Acta N&deg; </td> 
-                            <td class = 'verdeoscuroimg' > Ejem.Fecha </td>    
-                            <td class = 'verdeoscuroimg' > Ejem.Hora </td>
-                            <td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>
-                            <td class = 'verdeoscuroimg' > Ejem.Primer Nombre </td>              
-                            <td class = 'verdeoscuroimg' > Ejem.Segundo Nombre </td>                          
-                            <td class = 'verdeoscuroimg' > Ejem.Primer Apellido </td>                            
+                          <tr id = "ejemplo">
+                            <td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>      
+                            <td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>              
+                            <td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>                          
+                            <td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>
+                            <td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>                            
+                            <td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>
+                            
                             <td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>
-                            
-                            
-                          </tr>
+                          </tr>   
 
-
-                        
-                      </table> 
-
-                      <br> 
-
-                      <center id = "divtabla"  >
-                        
-                      </center> 
                           
+
+                      </table>    
+
+                      <button type="button" class="btn btn-default disabled center-block"  data-toggle="modal" data-target="#myModal" id = "seleccionar"> Seleccionar &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span></button>       
                 </div>
 
               
@@ -727,13 +758,135 @@ session_start();
         </div><!--/col-->
       </div>
             
-                            
-                  
-    <!-- Modal -->
+    
+  
+   <!-- Modal -->
 
 
-                    
-                
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                      <div class="modal-dialog modal-registro">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <center><h4 class="modal-title" id="myModalLabel">Registro de Reseña</h4></center>
+                          </div>
+                          <div class="modal-body">
+                                            
+                                          
+                         
+                          <div class="panel-body">
+                              <div class="form">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Resena.php">
+                                      
+                                    <input class="form-control hide" id="cod_act" name="cod_act" minlength="1" type="text" value = "" required />
+                                      <div class="form-group ">
+                                          <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                               <div class="input-group">
+                                                  
+                                                  <input class="form-control" id="cedula" name="cedula" minlength="5" type="text" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+
+
+                                      <div class="form-group ">
+                                          <label for="nombre1" class="control-label col-lg-3">Primer Nombre <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="nombre1" type="text" name="nombre1" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="nombre2" class="control-label col-lg-3">Segundo Nombre <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="nombre2" type="text" name="nombre2" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal14">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="apellido1" class="control-label col-lg-3">Primer Apellido <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="apellido1" type="text" name="apellido1" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal15">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="apellido2" class="control-label col-lg-3">Segundo Apellido <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="apellido2" type="text" name="apellido2" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="fechaN" class="control-label col-lg-3">Fecha de Nacimiento <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="fechaN" type="date" name="fechaN" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="direccion" class="control-label col-lg-3">Direcci&oacute;n <span ></span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="direccion" type="text" name="direccion" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      
+                                     
+                                      <div class="form-group">
+                                          <div class="col-lg-offset-3 col-lg-9">
+                                              <input class="btn btn-primary" type="submit" value="Guardar" name="Guardar">
+                                              
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+
+                          </div>
+                   
+                                       
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div> 
+                </div>
+                </div>
+            </div> 
 
     
 
@@ -792,7 +945,10 @@ session_start();
         })
       });
 
+      //consulta y carousel
       $(document).ready(function() {
+
+        alert('Seleccione el Acta para la Reseña');
            
          $("#buscar").focus();
 
@@ -808,14 +964,13 @@ session_start();
           if(dato.length > 0){
              //console.log(dato);
             $.ajax({
-              url:"../CONTROLADOR/Controlador_ConsultarR.php",
+              url:"../CONTROLADOR/Controlador_Acta.php",
               method: "GET",              
               data:{"dato":dato},
-              error: function( XMLHttpRequest,  textStatus,  errorThrown) {
+              error: function( jqXHR,  textStatus,  errorThrown) {
                   alert('Error Ajax Procedimientos');
                   alert(textStatus);
                   console.log(textStatus);
-                  console.log(XMLHttpRequest);
               },
               success: function(resultado){
                  //$("#tabla").empty();
@@ -825,31 +980,30 @@ session_start();
                  var cabecera = "<thead>";
                     cabecera += "  <tr class=success>";              
                     cabecera += "    <th>N&deg;</th>";
-                    cabecera += "    <th>Acta N&deg;</th>";
+                    cabecera += "    <th>C&oacute;digo</th>";
                     cabecera += "    <th>Fecha</th>";
                     cabecera += "    <th>Hora</th>";
-                    cabecera += "    <th>C&eacute;dula</th>";
-                    cabecera += "    <th>Primer Nombre</th>";
-                    cabecera += "    <th>Segundo Nombre</th>";                   
-                    cabecera += "    <th>Primer Apellido</th>";
-                    cabecera += "    <th>Acci&oacute;n</th>";
+                    cabecera += "    <th>Tipo</th>";
+                    cabecera += "    <th>Sector</th>";
+                    cabecera += "    <th>Funcionarios</th>";                   
+                    cabecera += "    <th>Procedimiento</th>";
                     cabecera += "  </tr>";
                     cabecera += "</thead>";
                   $("#tabla").prepend(cabecera);  
 
                 $.each(resultado,function(index){  
                                         
-               var nuevaFila="<tr id = '"+index+"'>";
+               var nuevaFila="<tr id ='"+resultado[index].codigo_act+"'>";
                nuevaFila+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";      
                nuevaFila+="<td > "+resultado[index].numero_act+" </td>";              
                nuevaFila+="<td > "+resultado[index].fecha_act+" </td>";  
                nuevaFila+="<td > "+resultado[index].hora_act+" </td>";                          
-               nuevaFila+="<td > "+resultado[index].cedula_per+" </td>";
-               nuevaFila+="<td > "+resultado[index].nombre1_per+" </td>";                             
-               nuevaFila+="<td > "+resultado[index].nombre2_per+" </td>"; 
-               nuevaFila+="<td > "+resultado[index].apellido1_per+" </td>";  
+               nuevaFila+="<td > "+resultado[index].tipo_act+" </td>";
+               nuevaFila+="<td > "+resultado[index].sector_act+" </td>";                             
+               nuevaFila+="<td > "+resultado[index].cantidad_per+" </td>"; 
+               nuevaFila+="<td > "+resultado[index].nombre_pro+" </td>";  
                         
-               nuevaFila+="<td> "+"<button type = 'submit' class = 'btn btn-info vermas' id = '"+index+"'>Ver <span class='glyphicon glyphicon-plus blancoimg'></span></button>"+" </td>";
+               
               nuevaFila+="</tr>";
               
 
@@ -868,208 +1022,31 @@ session_start();
                         
                     }
 
-                    
-              $(".vermas").on( "click", function() {
-            
-                var indice = $(this).attr("id");          
-                var vermas = " <thead>";
-                    vermas += " <tr class='success'>";                                    
-                    vermas += "  <th>C&eacute;dula</th>";
-                    vermas += "  <th>Primer Nombre</th>";
-                    vermas += "  <th>Segundo Nombre</th>";                   
-                    vermas += "  <th>Primer Apellido</th>";
-                    vermas += "  <th>Segundo Apellido</th>";
-                    vermas += "  <th>Fecha Nac.</th>";
-
-                    vermas += "</tr>";
-                    vermas += " </thead>";
-                    vermas += "<tr id = 'resena' class = 'visible'>";
-                    vermas += "  <td>"+resultado[indice].cedula_per+"</td>";
-                    vermas += "  <td>"+resultado[indice].nombre1_per+"</td>";
-                    vermas += "  <td>"+resultado[indice].nombre2_per+"</td>";
-                    vermas += "  <td>"+resultado[indice].apellido1_per+"</td>";
-                    vermas += "  <td>"+resultado[indice].apellido2_per+"</td>";
-                    vermas += "  <td>"+resultado[indice].fecha_nac_det+"</td>";
-
-                    vermas += "</tr>";
-                    vermas += "<tr class=' oculto'>";
-                    vermas += "  <td><input id = 'ced_"+resultado[indice].codigo_per+"' size = '8' minlength='1'   type='text' value = '"+resultado[indice].cedula_per+"'  required /></td>";
-                    vermas += "  <td><input id = 'nom1_"+resultado[indice].codigo_per+"' size = '18' minlength='1'   type='text' value = '"+resultado[indice].nombre1_per+"'  required /></td>";
-                    vermas += "  <td><input id = 'nom2_"+resultado[indice].codigo_per+"' size = '18' minlength='6' type='text' value = '"+resultado[indice].nombre2_per+"' required /></td>";
-                    vermas += "  <td><input id = 'ape1_"+resultado[indice].codigo_per+"' size = '18' minlength='6' type='text' value = '"+resultado[indice].apellido1_per+"' required /></td>";
-                    vermas += "  <td><input id = 'ape2_"+resultado[indice].codigo_per+"' size = '18' minlength='1' type='text' value = '"+resultado[indice].apellido2_per+"' required /></td>";
-                    vermas += "  <td><input id = 'fec_"+resultado[indice].codigo_per+"' size = '14' minlength='1' type='text' value = '"+resultado[indice].fecha_nac_det+"' required /></td>";
-                    
-                    
-                    vermas += "</tr>";
-
-                    
-                    vermas += "<thead>";
-                    vermas += "<tr class='success'>";
-                    vermas += "  <th colspan = '8' class = 'textcenter' >Direcci&oacute;n</th>";
-                    vermas += "</tr>"
-                    vermas += "</thead>";
-
-                    vermas += "<tr id = 'direccion' class = 'visible '>"; 
-                    vermas += "  <td colspan = '8' class = 'textcenter' >"+resultado[indice].direccion_det+"</td>";
-                    vermas += "</tr>";
-                    vermas += "<tr class=' oculto'>";
-                    vermas += "  <td colspan = '8'><input id = 'dir_"+resultado[indice].codigo_per+"' size = '160' minlength='0' type='text' value = '"+resultado[indice].direccion_det+"' required /></td>";
-                    vermas += "</tr>";
-
-                
-                    
-                    vermas += "</tr>";
-                              
-
-                   
-                   var btneditar = "<button id = '"+resultado[indice].codigo_per+"' type = 'submit' class = 'btn btn-success aceptaredi editando transparente' >Guardar <span class='glyphicon glyphicon-ok blancoimg'></span></button>&nbsp;&nbsp;&nbsp;"+"<button  id = 'btncancelaredi' type = 'submit' class = 'btn btn-danger  editando'>Cancelar <span class ='glyphicon glyphicon-remove blancoimg'></span></button>";                  
-                   var btnvermas = "<button id = '' type = 'button' class = 'btn btn-warning  editar' >Editar<span class='glyphicon glyphicon-pencil blancoimg'></span></button>";     
-                   
-                   $("#tabla tr").remove();
-                   $("#tabla").append(vermas);
-                   $("#divtabla").append(btnvermas,btneditar);
-                   $(".editando").hide();
-
-
-                
-
-                   $("#buscar").keyup(function(){
-
-                    $(".editar,.editando").remove();
-                   });
-
-
-                   $(".editar").on( "click", function() {
-
-                      
-                      
-                      $(".visible").hide("slow",function(){
-                           $(".oculto").show("fast");
-                          
-                      
-                      });
-
-                      $(".editar").hide("slow",function(){
-                        $(".editando").show();
-                      });
-
-
-                    });
-
-                   //cancelar editar
-                      $("#btncancelaredi").on( "click", function() {
-                      
-                        $(".oculto").hide("slow",function(){
-                             $(".visible").show("fast");
-                            
-                        
-                        });
-                                             
-                        $(".editando").hide("slow",function(){
-                          $(".editar").show();
-                        });
-
-                        $(".editar").on( "click", function() {
-
-                             $(".visible").hide("slow",function(){
-                               $(".oculto").show("fast");
-                              
-                          
-                            });
-
-                              $(".editar").hide("slow",function(){
-                                $(".editando").show();
-
-                             });
-                          });
-                      });
-
-                    
-                     
-                      //alert("hola");
-                     //aceptar editar
-                     $(".aceptaredi").on( "click", function() {
-
-                      
-                      var cod = $(this).attr("id"); 
-
-                      var ced = document.getElementById('ced_'+cod).value;
-                      var nom1 = document.getElementById('nom1_'+cod).value;
-                      var nom2 = document.getElementById('nom2_'+cod).value;
-                      var ape1 = document.getElementById('ape1_'+cod).value;
-                      var ape2 = document.getElementById('ape2_'+cod).value;
-                      var fec = document.getElementById('fec_'+cod).value;
-                      var dir = document.getElementById('dir_'+cod).value;
-    
-                      
-                      var res = "";
-                      res += "  <td>"+ced+"</td>";
-                      res += "  <td>"+nom1+"</td>";
-                      res += "  <td>"+nom2+"</td>";
-                      res += "  <td>"+ape1+"</td>";
-                      res += "  <td>"+ape2+"</td>";
-                      res += "  <td>"+fec+"</td>";
-                    
-
-                      var dire = "";
-              
-                      dire += "  <td colspan = '8' >"+dir+"</td>";
-                      
-                      
-                      
-
-                      
-                      $.post("../CONTROLADOR/Controlador_Resena.php",{cod:cod,ced: ced, nom1: nom1, nom2: nom2, ape1:ape1, ape2: ape2,  fec: fec, dir: dir},function(){
-
-                        $(".editando").hide("slow",function(){
-                            $(".editar").show();
-                          });
-
-                        $(".oculto").hide("slow",function(){
-
-                          $("#resena").html(res);
-                          $("#direccion").html(dire);
-
-                           
-                          
-                           $(".visible").show("fast");
-
-                          
-                          
-                      
-                            $(".editar").on( "click", function() {
-                            
-                              $(".visible").hide("slow",function(){
-                               $(".oculto").show("fast");
-                              
-                          
-                              });
-
-                                $(".editar").hide("slow",function(){
-                                  $(".editando").show();
-
-                               });
-                            });
-                          });
-
-                      });
-
-
-                      });
-
-                        
-
-
-
-           }); 
-                     
+                $('#tabla tr td').click(function () {
+                  var a = $(this).parent('tr');
+                  ida = a.attr("id");
 
                   
-
-                  
+                  a.css('background-color', '#688A7E');
+                  a.css('color', '#fff');
+                  $('#tabla tr td').click(function () {
+                    var b = $(this).parent('tr');
+                    //ida = a.attr("id"); error
+                    ida = b.attr("id");
+                    a.css('background-color', '#fff');
+                    a.css('color', '#797979');
+                    b.css('background-color', '#688A7E');
+                    b.css('color', '#fff');
                     
-                      
+                  });
+                   
+                    $("#cod_act").attr('value', ida);
+                    $("#seleccionar").removeClass("btn-default disabled");
+                    $("#seleccionar").addClass('btn-primary');
+                  
+                 
+                });
+
               }
               
             });
@@ -1079,54 +1056,26 @@ session_start();
             //$('#tabla').children( 'tr:not(:first)' ).remove();
             $('tr:not(:first)').remove();
             var primeraFila = "<tr>";
-            primeraFila +="<td class = 'verdeoscuroimg'> N&deg; </td>";
-            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.Acta </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.fecha </td>"; 
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Hora </td>";     
+            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>";      
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>";              
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Primer Nombre </td>";                                       
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Segundo Nombre </td>";                            
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Primer Apellido </td>";
-            
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Ver + </td>";
+            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>";                            
+            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>";
+            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>";                            
+            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>";
+            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>";
             primeraFila += "</tr>";
             $("#tabla").append(primeraFila);
             $("#cargando").html("");
+
           }
          
         });
 
-                
+
+         
+         
       });
 
-
-      //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
-    
-    /* ---------- Map ---------- */
-  $(function(){
-    $('#map').vectorMap({
-      map: 've_mill_en',
-      series: {
-        regions: [{
-          values: gdpData,
-          scale: ['#000', '#000'],
-          normalizeFunction: 'polynomial'
-        }]
-      },
-   backgroundColor: '#8D8D8D',
-      onLabelShow: function(e, el, code){
-        el.html(el.html()+' (GDP - '+gdpData[code]+')');
-      }
-    });
-  });
-
-
-
-  
 
 
 

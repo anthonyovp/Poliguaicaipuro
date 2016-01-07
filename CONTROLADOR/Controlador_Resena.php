@@ -36,13 +36,15 @@
               $procesar=2;
            
             }
-      else if(isset($_POST["codigo"])){
-            $codigo = $_POST["codigo"];
-            $ci = $_POST["ci"];
+      else if(isset($_POST["cod"])){
+            $codigo = $_POST["cod"];
+            $ci = $_POST["ced"];
             $nom1 = $_POST["nom1"];
             $nom2 = $_POST["nom2"];
             $ape1 = $_POST["ape1"];
             $ape2 = $_POST["ape2"];
+            $fec = $_POST["fec"];
+            $dir = $_POST["dir"];
 
             $procesar=3;
           }
@@ -69,16 +71,16 @@
             if(is_numeric($dato)){
               $Resena->set_cedula($dato);
               
-              $data = $Resena->consultarResenaCedula();
+              $data = $Resena->consultarDetenidoCedula();
             }else{
               $Resena->set_nombre($dato);
-              $data = $Resena->consultarResenaNombre();
+              $data = $Resena->consultarDetenidoNombre();
             }
             
-           
+         
 
             header("Content-Type:Application/json");
-            echo json_encode($datos);
+            echo json_encode($data);
             
            break;
 
@@ -93,7 +95,8 @@
           
 
           $data = $Resena->modificarPersona($codigo);
-          $data2 = $Resena->modificarResena($codigo,$cre,$sta);
+          $data2 = $Resena->modificarDetenido($codigo,$fec,$dir);
+          
 
 
         break;

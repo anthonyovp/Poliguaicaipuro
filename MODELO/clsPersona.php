@@ -177,14 +177,37 @@
 	   	   return  $this->objDatos->resultado($datos);
     	}
 
+    	public function consultarDetenidoCedula(){
+	       // $objDatos = new clsDatos();
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM Persona  INNER JOIN Detenido ON Persona.codigo_per = Detenido.cod_per  INNER JOIN acta_per  ON Persona.codigo_per = acta_per.cod_per
+	      	 INNER JOIN Acta ON Acta.codigo_act =  acta_per.cod_act WHERE Persona.cedula_per like '$this->cedula%'";
+
+	   		$datos =  $this->objDatos->consulta_query($sql);
+	   		
+	   		// $this->objDatos->desconectar();
+	   	   return  $this->objDatos->resultado($datos);
+    	}
+
+    	public function consultarDetenidoNombre(){
+	       // $objDatos = new clsDatos();
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM Persona  INNER JOIN Detenido ON Persona.codigo_per = Detenido.cod_per INNER JOIN acta_per  ON Persona.codigo_per = acta_per.cod_per
+	      	 INNER JOIN Acta ON Acta.codigo_act =  acta_per.cod_act WHERE Persona.nombre1_per like '$this->nombre1%'";
+
+	   		$datos =  $this->objDatos->consulta_query($sql);
+	   		// $this->objDatos->desconectar();
+	   	   return  $this->objDatos->resultado($datos);
+    	}
+
     	public function modificarPersona($codigo){
 	       
 		  	$this->objDatos= new clsDatos();
 		    $this->objDatos->conectar();
-	      	$sql = " UPDATE Persona SET cedula_per = '$this->cedula' ,nombre1_per = '$this->nombre1' , nombre2_per = '$this->nombre2' , apellido1_per = '$this->apellido1' , apellido2_per = '$this->apellido2'  WHERE codigo_per = $codigo ";
-	      	//echo "<script language='javascript'> console.log($sql)</script>"; da error a la consulta aunque llamen a otra funcion 
-
-	   		$datos =  $this->objDatos->consulta_query($sql);
+	      	$sql = " UPDATE Persona SET cedula_per = '$this->cedula' ,nombre1_per = '$this->nombre1' , nombre2_per = '$this->nombre2' , apellido1_per = '$this->apellido1' , apellido2_per = '$this->apellido2'  WHERE codigo_per = $codigo ";   
+	   		$datos =  $this->objDatos->ejecutar2($sql);
 	   		// $this->objDatos->desconectar();
 	   	   return  $datos;
     	}
@@ -199,6 +222,17 @@
 	   		$datos =  $this->objDatos->consulta_query($sql);
 	   		// $this->objDatos->desconectar();
 	   	   return  $datos;
+    	}
+
+    	public function modificarDetenido($codigo,$fec,$dir){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = " UPDATE Detenido SET fecha_nac_det = '$fec' , direccion_det = '$dir'  WHERE cod_per = $codigo ";    
+
+	   		$datos =  $this->objDatos->ejecutar2($sql);
+	   		// $this->objDatos->desconectar();
+	   	   return;
     	}
 
 

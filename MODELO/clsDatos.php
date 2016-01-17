@@ -71,6 +71,7 @@
 	public function ejecutar($sqlx){
     
 		    $this->consulta = mysqli_query($this->conexion,$sqlx);
+			//echo $sqlx."<br>";
 			
 			
 
@@ -161,7 +162,7 @@
     	public function consulta_query($sql){
     		//echo $sql;
     		//echo "<script> alert('existe".$sql."');</script>";
-
+    		//echo mysql_error();
     		return mysqli_query($this->conexion,$sql);
     		
     	}
@@ -173,8 +174,8 @@
     			$array[] = $fila;
     		}
 
+    		//echo mysql_error();
     		
-
     		return $array;
     	}
 
@@ -221,13 +222,35 @@
     		return $array;
     	}
 
-    	public function autenticado(){
-			if(isset($_SESSION["email_usuario"]) && isset($_SESSION["tipo_usuario"])){
-				return $_SESSION["tipo_usuario"];
-			}else{
-				return false;
-			}
-		}
+    	protected function resultadoMD($datos){
+    		
+    		$array = array();
+    		
+    		while($fila = mysqli_fetch_array($datos)){
+
+
+    			$fila["codigo_fun_mer"]= explode(",", $fila["codigo_fun_mer"]);
+    			$fila["fecha_fun_mer"]= explode(",", $fila["fecha_fun_mer"]);
+    			$fila["dependencia_fun_mer"]= explode(",", $fila["dependencia_fun_mer"]);
+    			$fila["comentario_fun_mer"]= explode(",", $fila["comentario_fun_mer"]);
+    			$fila["tipo_mer_dem"]= explode(",", $fila["tipo_mer_dem"]);
+    			$fila["categoria_mer_dem"]= explode(",", $fila["categoria_mer_dem"]);
+    			$fila["especificacion_mer_dem"]= explode(",", $fila["especificacion_mer_dem"]);
+
+    			
+    			/*echo "<script> alert('existe".$fila["nombre1_per"][0]."');</script>";
+    			echo "<script> alert('existe".$fila["nombre1_per"][1]."');</script>";
+    			echo "<script> alert('existe".$fila["nombre1_per"]."');</script>";*/
+
+    			$array[] = $fila;
+    		}
+
+
+    		
+    		return $array;
+    	}
+
+    	
 
 
 
@@ -260,6 +283,14 @@
     		
     		return $array;
     	}
+
+    	public function autenticado(){
+			if(isset($_SESSION["email_usuario"]) && isset($_SESSION["tipo_usuario"])){
+				return $_SESSION["tipo_usuario"];
+			}else{
+				return false;
+			}
+		}
 
 
     	public function dato($sql){

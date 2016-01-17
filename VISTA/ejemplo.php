@@ -768,7 +768,7 @@ session_start();
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <center><h4 class="modal-title" id="myModalLabel">Registro de Funcionario</h4></center>
+                            <center><h4 class="modal-title" id="myModalLabel">Prueba</h4></center>
                           </div>
                           <div class="modal-body">
                                             
@@ -776,88 +776,33 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Funcionario.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="GET" action="../CONTROLADOR/Controlador_Meritos_Demeritos.php">
                                       <div class="form-group ">
-                                          <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
+                                          <label for="dato" class="control-label col-lg-3">Dato <span class="required">*</span></label>
                                             <div class="col-lg-9">
                                                <div class="input-group">
                                                   
-                                                  <input class="form-control" id="cedula" name="cedula" min="1000000" max="999999999" type="number" required />
+                                                  <input class="form-control" id="dato" name="dato"  type="text" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
+                                                  
+                                              </div>
+                                              
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          
+                                            <div class="col-lg-9">
+                                               <div class="input-group">
+                                                  
+                                                  <input class="btn btn-primary" type="submit" value="Guardar" name="Guar">
+                                                  
                                               </div>
                                               
                                           </div>
                                       </div>
 
 
-                                      <div class="form-group ">
-                                          <label for="nombre1" class="control-label col-lg-3">Primer Nombre <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="nombre1" type="text" name="nombre1" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="nombre2" class="control-label col-lg-3">Segundo Nombre <span ></span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="nombre2" type="text" name="nombre2" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal14">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="apellido1" class="control-label col-lg-3">Primer Apellido <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="apellido1" type="text" name="apellido1" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal15">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="apellido2" class="control-label col-lg-3">Segundo Apellido <span ></span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="apellido2" type="text" name="apellido2" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="credencial" class="control-label col-lg-3">Credencial <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="credencial" type="text" name="credencial" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                     
-                                      <div class="form-group">
-                                          <div class="col-lg-offset-3 col-lg-9">
-                                              <input class="btn btn-primary" type="submit" value="Guardar" name="Guardar">
-                                              
-                                          </div>
-                                      </div>
+                                      
                                   </form>
                               </div>
 
@@ -924,182 +869,7 @@ session_start();
 
       //consulta y carousel
       $(document).ready(function() {
-           
-         $("#buscar").focus();
-
-
-         $("#buscar").keyup(function(){
-          //$("#buscar").css("border-color", "#245580");
-          
-
-          var dato = $("#buscar").val();
-
-          $("#cargando").html("<h6><img id = 'imgcargando' src='../img/cargando2.gif' alt='cargando' width='20%'>&nbsp;&nbsp;<strong> Cargando...</strong><h6>");
-
-          if(dato.length > 0){
-             //console.log(dato);
-            $.ajax({
-              url:"../CONTROLADOR/Controlador_ConsultarF.php",
-              method: "GET",              
-              data:{"dato":dato},
-              error: function( XMLHttpRequest,  textStatus,  errorThrown) {
-                  //alert('Error Ajax Procedimientos');
-                  alert(textStatus);
-                  console.log(XMLHttpRequest);
-              },
-              success: function(resultado){
-                 //$("#tabla").empty();
-
-                
-                 $("#tabla tr td").remove();
-                $.each(resultado,function(index){  
-                                        
-               var nuevaFila= "<tr id='cambiar"+resultado[index].codigo_per+"'>";
-               nuevaFila+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";      
-               nuevaFila+="<td id = 'ci_td_"+resultado[index].codigo_per+"' > "+resultado[index].cedula_per+" </td>";              
-               nuevaFila+="<td id = 'nom1_td_"+resultado[index].codigo_per+"'> "+resultado[index].nombre1_per+" </td>";                            
-               nuevaFila+="<td id = 'nom2_td_"+resultado[index].codigo_per+"'> "+resultado[index].nombre2_per+" </td>";
-               nuevaFila+="<td id = 'ape1_td_"+resultado[index].codigo_per+"'> "+resultado[index].apellido1_per+" </td>";                            
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].codigo_per+"'> "+resultado[index].apellido2_per+" </td>";   
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].codigo_per+"'> "+resultado[index].credencial_fun+" </td>";  
-               nuevaFila+="<td id = 'sta_td_"+resultado[index].codigo_per+"'> "+resultado[index].status_fun+" </td>";         
-               nuevaFila+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
-              nuevaFila+="</tr>";
-              
-              nuevaFila+="<tr id='cambio"+resultado[index].codigo_per+"'  class = 'oculto' >";
-              nuevaFila+="<td  id = '"+(index+1)+"' > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";
-              nuevaFila+="<td><input id = 'ci_"+resultado[index].codigo_per+"' style='width: 8em;' min='1000000' max='999999999'  type='number' value = '"+resultado[index].cedula_per+"'   required /> </td>";
-              nuevaFila+="<td><input id = 'nom1_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].nombre1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'nom2_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].nombre2_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape1_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].apellido1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape2_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].apellido2_per+"' required /> </td>";
-              nuevaFila+="<td><input id = 'cre_"+resultado[index].codigo_per+"' size = '12' minlength='1' maxlength='50'  type='text' value = '"+resultado[index].credencial_fun+"' required /> </td>";
-               nuevaFila+="<td><input id = 'sta_"+resultado[index].codigo_per+"' size = '12' minlength='1' maxlength='10'  type='text' value = '"+resultado[index].status_fun+"' required /> </td>";
-              nuevaFila+="<td> "+"<button id = '"+resultado[index].codigo_per+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'button' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
-              nuevaFila+="<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";      
-              nuevaFila+="</tr>";
-              
-
-            $("#tabla").append(nuevaFila);
-                 
-                });
-
-                              
-                    
-                    if(resultado.length <= 0 ){
-                      $("#cargando").html("<span class ='glyphicon glyphicon-remove rojoimg'></span>");
-                                           
-                    }else{
-
-                       $("#cargando").html("<span class ='glyphicon glyphicon-ok verdeoscuroimg'></span>");
-                        
-                    }
-
-                    $(".editar").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").next("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                     $(".cancelaredi").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                    $(".aceptaredi").on( "click", function() {
-                      
-                      
-                      var elemento = $(this);
-                      var codigo = $(this).attr("id");
-                      var index = $(this).closest("tr").children('td:first').attr("id"); 
-                      var ci = document.getElementById('ci_'+codigo).value;              
-                      var nom1 = document.getElementById('nom1_'+codigo).value;
-                      var nom2 = document.getElementById('nom2_'+codigo).value;
-                      var ape1 = document.getElementById('ape1_'+codigo).value;
-                      var ape2 = document.getElementById('ape2_'+codigo).value;
-                      var cre = document.getElementById('cre_'+codigo).value;
-                      var sta = document.getElementById('sta_'+codigo).value;
-
-                      var trd = "";
-                      trd+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+index+"</td>";      
-                      trd+="<td id = 'ci_td_"+codigo+"' > "+ci+" </td>";              
-                      trd+="<td id = 'nom1_td_"+codigo+"'> "+nom1+" </td>";                            
-                      trd+="<td id = 'nom2_td_"+codigo+"'> "+nom2+" </td>";
-                      trd+="<td id = 'ape1_td_"+codigo+"'> "+ape1+" </td>";                            
-                      trd+="<td id = 'ape2_td_"+codigo+"'> "+ape2+" </td>";
-                      trd+="<td id = 'cre_td_"+codigo+"'> "+cre+" </td>";
-                      trd+="<td id = 'sta_td_"+codigo+"'> "+sta+" </td>";
-                      trd+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
-                      
-                      
-                      $.post("../CONTROLADOR/Controlador_Funcionario.php",{codigo: codigo, ci: ci, nom1: nom1, nom2: nom2, ape1: ape1, ape2: ape2, cre: cre , sta: sta},function(){
-
-                        elemento.closest("tr").hide("slow",function(){
-                          $(this).closest("tr").prev("tr").html(trd);
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                            $(".editar").on( "click", function() {
-                            
-                            $(this).closest("tr").hide("slow",function(){
-                                 $(this).closest("tr").next("tr").show("fast");
-                                
-                            
-                            });
-                          });
-
-                      });
-
-
-                      });
-
-                        
-
-                    });
-
-                  
-                    
-                      
-              }
-              
-            });
-
-          }else{
-
-            //$('#tabla').children( 'tr:not(:first)' ).remove();
-            $('tr:not(:first)').remove();
-            var primeraFila = "<tr>";
-            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.N&deg; </td>";      
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>";              
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>";                            
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>";                            
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Credencial </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Status </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>";
-            primeraFila += "</tr>";
-            $("#tabla").append(primeraFila);
-            $("#cargando").html("");
-          }
-         
-        });
-
-
-            $("#cancelar").click(function () {
-              
-                          
-              $("#myModal").modal('hide');
-               $("#feedback_form")[0].reset();
-            });  
-          
+        
          
           
       });

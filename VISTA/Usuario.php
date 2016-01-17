@@ -191,7 +191,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
+                            <li><a class="" href="Meritos Demeritos.php">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -239,7 +239,7 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="general.html">Estad&iacute;sticas por Mes</a></li>
+                          <li><a class="" href="ejemplo.php">Estad&iacute;sticas por Mes</a></li>
                           <li><a class="" href="buttons.html">Estad&iacute;sticas por Año</a></li>
                           <li><a class="" href="grids.html">Estad&iacute;sticas por lugar</a></li>
                       </ul>

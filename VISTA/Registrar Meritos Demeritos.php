@@ -3,6 +3,7 @@
 <?php 
 session_start();
 ?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -55,7 +56,7 @@ session_start();
   <section id="container" class="">
      
       
-           <header class="header dark-bg">
+      <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
             </div>
@@ -257,7 +258,7 @@ session_start();
                   <li class = "active">
                       <a class="" href="Usuario.php" >
                           <i class="icon_document_alt"></i>
-                          <span>Multas de Tr&aacute;nsito</span>
+                          <span> de Tr&aacute;nsito</span>
                       </a>
                   </li>
                              
@@ -323,24 +324,25 @@ session_start();
               ?>
               <!-- sidebar menu end-->
        </section>
+       
       <!--sidebar end-->
       
-       <!--main content start-->
+      <!--main content start-->
+
+
       <section id="main-content">
-
-          <section class="wrapper"> 
-
+          <section class="wrapper">            
               <!--overview start-->
         <div class="row">
         <div class="col-lg-12">
           <p class="text-right"><a class="" href="#modalp">&nbsp;<i class="glyphicon glyphicon-question-sign"></i>Ayuda</a> </p>
           <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;Funcionarios
+            <li><i class="fa fa-home"></i><a href="Usuario.php">Inicio</a></li>  &nbsp;&nbsp;&nbsp;<i></i>&nbsp;M&eacute;ritos o Dem&eacute;ritos
                           
           </ol>
         </div>
       </div>
-
+      
 
  <!-- Comienzo Modales para manual de usuario-->
   <div id="modalp" class="modalmask">
@@ -479,8 +481,8 @@ session_start();
     <div class="modalbox movedown">
         <a href="#close" title="Close" class="close">X</a>
         <center><h4>Consultar Funcionarios</h4></center>
-        <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a consultar. 
-          El Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
+        <p>Ubica en la parte superior-izquierda el campo de texto que dice Buscar y teclea la cédula o el primer nombre del funcionario a consultar, 
+          notarás que el Sistema filtrará los datos que coincidan con lo que  teclees en el campo de texto.
 
         </p>
         <center><img src="../img/Ayudafuncionario6.jpg" class="img img-responsive"></center><br>
@@ -677,7 +679,8 @@ session_start();
     </div>
   </div>
   <!-- Final Modales para manual de usuario-->
-      
+
+
       <!-- Form validations -->              
               <div class="row">
                   <div class="col-lg-12">
@@ -690,9 +693,8 @@ session_start();
         <div class="col-lg-12 col-md-12">  
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h2><i class="fa fa-flag-o red"></i><strong>Funcionarios</strong></h2>
+              <h2><i class="fa fa-flag-o red"></i><strong>Registrar M&eacute;ritos o Dem&eacute;ritos</strong></h2>
               <div class="panel-actions">
-                <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal"> Agregar&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
                 
               </div>
 
@@ -700,7 +702,7 @@ session_start();
             <div  class="panel-body ">
               <div class="table-responsive">
                 <form class="navbar-form" >
-                       <div class="form-group ">
+                   <div class="form-group ">
                         <div class="input-group">
                                                   
                           <input class="form-control" placeholder="Buscar" type="search" id = "buscar">
@@ -720,33 +722,34 @@ session_start();
                           <thead>
                             <tr class="success">
                               
-                              <th>N&deg;</th>
+                              <th>N&uacute;mero</th>
                               <th>Cédula</th>
                               <th>Primer Nombre</th>
                               <th>Segundo Nombre</th>                   
                               <th>Primer Apellido</th>
                               <th>Segundo Apellido</th>
                               <th>Credencial</th>
-                              <th>Status</th>
-                              <th>Acci&oacute;n<th>
+                              
                               
                            
 
                             </tr>
                           </thead>
-                          <tr>
-                            <td class = 'verdeoscuroimg'> Ejem.N&deg; </td>      
+                          
+                          <tr id = "ejemplo">
+                            <td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>      
                             <td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>              
                             <td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>                          
                             <td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>
                             <td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>                            
                             <td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>
                             <td class = 'verdeoscuroimg' > Ejem.Credencial </td>
-                            <td class = 'verdeoscuroimg' > Ejem.Status </td>
-                            <td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>
-                          </tr>   
-
-                      </table>       
+                            
+                          </tr>
+                          
+                        
+                      </table>   
+                      <button type="button" class="btn btn-default disabled center-block"  data-toggle="modal" data-target="#myModal" id = "seleccionar"> Seleccionar &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span></button>    
                 </div>
 
               
@@ -759,16 +762,16 @@ session_start();
       </div>
             
     
-  
-   <!-- Modal -->
+
+    <!-- Modal -->
 
 
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
                       <div class="modal-dialog modal-registro">
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <center><h4 class="modal-title" id="myModalLabel">Registro de Funcionario</h4></center>
+                            <center><h4 class="modal-title" id="myModalLabel">Datos del M&eacute;rito o Dem&eacute;rito</h4></center>
                           </div>
                           <div class="modal-body">
                                             
@@ -776,88 +779,112 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Funcionario.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/../CONTROLADOR/Controlador_Meritos_Demeritos.php">
+                                      <input class="form-control hide" id="cod_fun" name="cod_fun" minlength="1" type="text" value = "1" required />
+
                                       <div class="form-group ">
-                                          <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
-                                            <div class="col-lg-9">
-                                               <div class="input-group">
-                                                  
-                                                  <input class="form-control" id="cedula" name="cedula" min="1000000" max="999999999" type="number" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
+                                          <label for="fec" class="control-label col-lg-3"> Fecha <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                <input class="form-control " id="fec" type="date" name="fec" required />
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
-                                              
                                           </div>
                                       </div>
 
+                                      <div class="form-group ">
+                                          <label for="dep" class="control-label col-lg-3"> Dependencia <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                <input class="form-control" id="dep" name="dep"  type="text" minlength="1" maxlength="50" required />
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      
+                                      <div class="form-group ">
+                                          <label for="tip" class="control-label col-lg-3"> Tipo <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                 <select class="form-control " id="tip" type="text" name="tip" required>
+                                                    <option value="Merito">M&eacute;rito</option>
+                                                    <option value="Demerito">Dem&eacute;rito</option>
+                                                  </select> 
+                                                
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="cat" class="control-label col-lg-3"> Categoria <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                              <select class="form-control " id="cat" type="text" name="cat" required>
+                                                  <option class = "mer" value="Agradecimiento">Agradecimiento</option>
+                                                  <option class = "mer" value="Felicitacion">Felicitaci&oacute;n</option>
+                                                  <option class = "mer" value="Cursos">Cursos</option>
+                                                  <option class = "mer" value="Lic">Lic.</option>
+                                                  <option class = "mer" value="TSU">TSU</option>
+                                                  <option class = "mer" value="">Orden del D&iacute;a</option>
+                                                  <option class = "dem oculto" value="Asistencia">Asistencia</option>
+                                                  <option class = "dem oculto" value="Reporte">Reporte</option>
+                                                  <option class = "dem oculto" value="Inasistencias">Inasistencias</option>
+                                                  <option class = "dem oculto" value="Extravio">Extrav&iacute;o</option>
+                                                </select> 
+                                              <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                            </div>
+                                          </div>
+                                      </div>
 
-                                      <div class="form-group ">
-                                          <label for="nombre1" class="control-label col-lg-3">Primer Nombre <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="nombre1" type="text" name="nombre1" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="nombre2" class="control-label col-lg-3">Segundo Nombre <span ></span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="nombre2" type="text" name="nombre2" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal14">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="apellido1" class="control-label col-lg-3">Primer Apellido <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="apellido1" type="text" name="apellido1" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal15">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="apellido2" class="control-label col-lg-3">Segundo Apellido <span ></span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="apellido2" type="text" name="apellido2" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="credencial" class="control-label col-lg-3">Credencial <span class="required">*</span></label>
-                                          <div class="col-lg-9">
-                                            <div class="input-group">
-                                                  
-                                                  <input class="form-control " id="credencial" type="text" name="credencial" minlength="1" maxlength="50" required />
-                                                  <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
                                      
+                                        <div class="form-group oculto "  id="eMeritos" >
+                                          <label for="esp" class="control-label col-lg-3"> Especificaci&oacute;n <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                <select class="form-control " id="esp" name="esp"  type="text">
+                                                  <option class = "fel" value="Internas">Internas</option>
+                                                  <option class = "fel" value="Externas">Externas</option>
+                                                  <option class = "cur" value="Policial">Policial</option>
+                                                  <option class = "cur" value="No Policial">No Policial</option>
+                                                  <option class = "asi" value="Voluntaria">Voluntaria</option>
+                                                  <option class = "asi" value="Obligatoria">Obligatoria</option>
+                                                  <option class = "ext" value="Credencial">Credencial</option>
+                                                  <option class = "ext" value="Equipo">Equipo</option>
+                                                </select> 
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                              </div>
+                                          </div>
+                                        </div>
+                                      
+                                     <!-- <div id="eDemeritos" class = "oculto">
+                                        <div class="form-group ">
+                                          <label for="esp" class="control-label col-lg-3"> Especificaci&oacute;n <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                              <div class="input-group">
+                                                <input class="form-control" id="esp" name="esp"  type="text" required />
+                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                              </div>
+                                          </div>
+                                        </div>
+                                      </div> -->
+
+                                      <div class="form-group ">
+                                          <label for="com" class="control-label col-lg-3"> Comentario <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                              <input class="form-control " id="com" type="text" name="com" minlength="1" maxlength="500" required />
+                                              <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                                            </div>
+                                          </div>
+                                      </div>
+
                                       <div class="form-group">
                                           <div class="col-lg-offset-3 col-lg-9">
                                               <input class="btn btn-primary" type="submit" value="Guardar" name="Guardar">
-                                              
+                                              <button class="btn btn-default " type="button"  id="cancelar"> Cancelar</button>
                                           </div>
                                       </div>
+
                                   </form>
                               </div>
 
@@ -868,7 +895,10 @@ session_start();
                           
                         </div>
                       </div>
-                    </div> 
+                    </div>
+
+
+    
                 </div>
                 </div>
             </div> 
@@ -920,12 +950,79 @@ session_start();
   
   <script>
     
-     
-
-      //consulta y carousel
+      
       $(document).ready(function() {
+
+          $("#cat").change(function(){
+            var cate = $("#cat").val();
+            cate = cate.toLowerCase();
+            
+            if(cate == "felicitacion" || cate == "cursos" || cate == "asistencias" || cate == "extravio"){
+              $("#eMeritos").show("fast");
+              $("#esp").prop('required',true);
+              if(cate == "felicitaciones"){
+                $('#esp option:eq(0)').prop('selected', true);
+                $(".fel").show("fast");
+                $(".cur").hide("fast");
+                $(".asi").hide("fast");
+                $(".ext").hide("fast");
+              } 
+              else if(cate == "cursos"){
+                $('#esp option:eq(2)').prop('selected', true);
+                $(".cur").show("fast");
+                $(".fel").hide("fast");
+                $(".asi").hide("fast");
+                $(".ext").hide("fast");
+              }
+              else if(cate == "asistencias"){
+                $('#esp option:eq(4)').prop('selected', true);
+                $(".asi").show("fast");
+                $(".fel").hide("fast");
+                $(".cur").hide("fast");
+                $(".ext").hide("fast");
+              }
+              else{
+                $('#esp option:eq(6)').prop('selected', true);
+                $(".ext").show("fast");
+                $(".fel").hide("fast");
+                $(".cur").hide("fast");
+                $(".asi").hide("fast");
+              }
+
+            }else{
+              $("#eMeritos").hide("fast");
+              $("#esp").prop('required',false);
+              }
+            
+
+          });
+
+          $("#tip").change(function(){
+            var tipo = $("#tip").val();
+            tipo = tipo.toLowerCase();
+            
+            if(tipo == "merito" ){
+              $('#cat option:eq(0)').prop('selected', true);
+              $("#eMeritos").hide("fast");
+              $("#esp").prop('required',false);
+              $(".mer").show("fast");
+              $(".dem").hide("fast");
+            }else{
+              $('#cat option:eq(6)').prop('selected', true);
+              $("#eMeritos").hide("fast");
+              $("#esp").prop('required',false);
+              $(".dem").show("fast");
+              $(".mer").hide("fast");
+              }
+            
+
+          });
+
+        $("#guardar").click(function(){
+          $("form").submit();
+        });
            
-         $("#buscar").focus();
+        $("#buscar").focus();
 
 
          $("#buscar").keyup(function(){
@@ -942,11 +1039,7 @@ session_start();
               url:"../CONTROLADOR/Controlador_ConsultarF.php",
               method: "GET",              
               data:{"dato":dato},
-              error: function( XMLHttpRequest,  textStatus,  errorThrown) {
-                  //alert('Error Ajax Procedimientos');
-                  alert(textStatus);
-                  console.log(XMLHttpRequest);
-              },
+              
               success: function(resultado){
                  //$("#tabla").empty();
 
@@ -954,31 +1047,16 @@ session_start();
                  $("#tabla tr td").remove();
                 $.each(resultado,function(index){  
                                         
-               var nuevaFila= "<tr id='cambiar"+resultado[index].codigo_per+"'>";
+               var nuevaFila="<tr id ='"+resultado[index].codigo_per+"'>";
                nuevaFila+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";      
-               nuevaFila+="<td id = 'ci_td_"+resultado[index].codigo_per+"' > "+resultado[index].cedula_per+" </td>";              
-               nuevaFila+="<td id = 'nom1_td_"+resultado[index].codigo_per+"'> "+resultado[index].nombre1_per+" </td>";                            
-               nuevaFila+="<td id = 'nom2_td_"+resultado[index].codigo_per+"'> "+resultado[index].nombre2_per+" </td>";
-               nuevaFila+="<td id = 'ape1_td_"+resultado[index].codigo_per+"'> "+resultado[index].apellido1_per+" </td>";                            
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].codigo_per+"'> "+resultado[index].apellido2_per+" </td>";   
-               nuevaFila+="<td id = 'ape2_td_"+resultado[index].codigo_per+"'> "+resultado[index].credencial_fun+" </td>";  
-               nuevaFila+="<td id = 'sta_td_"+resultado[index].codigo_per+"'> "+resultado[index].status_fun+" </td>";         
-               nuevaFila+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
+               nuevaFila+="<td > "+resultado[index].cedula_per+" </td>";              
+               nuevaFila+="<td > "+resultado[index].nombre1_per+" </td>";                            
+               nuevaFila+="<td > "+resultado[index].nombre2_per+" </td>";
+               nuevaFila+="<td > "+resultado[index].apellido1_per+" </td>";                            
+               nuevaFila+="<td > "+resultado[index].apellido2_per+" </td>";   
+               nuevaFila+="<td > "+resultado[index].credencial_fun+" </td>";                          
               nuevaFila+="</tr>";
-              
-              nuevaFila+="<tr id='cambio"+resultado[index].codigo_per+"'  class = 'oculto' >";
-              nuevaFila+="<td  id = '"+(index+1)+"' > &nbsp;&nbsp;&nbsp;&nbsp;"+(index+1)+"</td>";
-              nuevaFila+="<td><input id = 'ci_"+resultado[index].codigo_per+"' style='width: 8em;' min='1000000' max='999999999'  type='number' value = '"+resultado[index].cedula_per+"'   required /> </td>";
-              nuevaFila+="<td><input id = 'nom1_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].nombre1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'nom2_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].nombre2_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape1_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].apellido1_per+"' required /> </td>"; 
-              nuevaFila+="<td><input id = 'ape2_"+resultado[index].codigo_per+"' size = '18' minlength='1' maxlength='50' type='text' value = '"+resultado[index].apellido2_per+"' required /> </td>";
-              nuevaFila+="<td><input id = 'cre_"+resultado[index].codigo_per+"' size = '12' minlength='1' maxlength='50'  type='text' value = '"+resultado[index].credencial_fun+"' required /> </td>";
-               nuevaFila+="<td><input id = 'sta_"+resultado[index].codigo_per+"' size = '12' minlength='1' maxlength='10'  type='text' value = '"+resultado[index].status_fun+"' required /> </td>";
-              nuevaFila+="<td> "+"<button id = '"+resultado[index].codigo_per+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'button' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
-              nuevaFila+="<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>";      
-              nuevaFila+="</tr>";
-              
+             
 
             $("#tabla").append(nuevaFila);
                  
@@ -994,117 +1072,76 @@ session_start();
                        $("#cargando").html("<span class ='glyphicon glyphicon-ok verdeoscuroimg'></span>");
                         
                     }
-
-                    $(".editar").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").next("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                     $(".cancelaredi").on( "click", function() {
-                      
-                      $(this).closest("tr").hide("slow",function(){
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                      });
-                    });
-
-                    $(".aceptaredi").on( "click", function() {
-                      
-                      
-                      var elemento = $(this);
-                      var codigo = $(this).attr("id");
-                      var index = $(this).closest("tr").children('td:first').attr("id"); 
-                      var ci = document.getElementById('ci_'+codigo).value;              
-                      var nom1 = document.getElementById('nom1_'+codigo).value;
-                      var nom2 = document.getElementById('nom2_'+codigo).value;
-                      var ape1 = document.getElementById('ape1_'+codigo).value;
-                      var ape2 = document.getElementById('ape2_'+codigo).value;
-                      var cre = document.getElementById('cre_'+codigo).value;
-                      var sta = document.getElementById('sta_'+codigo).value;
-
-                      var trd = "";
-                      trd+="<td > &nbsp;&nbsp;&nbsp;&nbsp;"+index+"</td>";      
-                      trd+="<td id = 'ci_td_"+codigo+"' > "+ci+" </td>";              
-                      trd+="<td id = 'nom1_td_"+codigo+"'> "+nom1+" </td>";                            
-                      trd+="<td id = 'nom2_td_"+codigo+"'> "+nom2+" </td>";
-                      trd+="<td id = 'ape1_td_"+codigo+"'> "+ape1+" </td>";                            
-                      trd+="<td id = 'ape2_td_"+codigo+"'> "+ape2+" </td>";
-                      trd+="<td id = 'cre_td_"+codigo+"'> "+cre+" </td>";
-                      trd+="<td id = 'sta_td_"+codigo+"'> "+sta+" </td>";
-                      trd+="<td> "+"<button type = 'submit' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
-                      
-                      
-                      $.post("../CONTROLADOR/Controlador_Funcionario.php",{codigo: codigo, ci: ci, nom1: nom1, nom2: nom2, ape1: ape1, ape2: ape2, cre: cre , sta: sta},function(){
-
-                        elemento.closest("tr").hide("slow",function(){
-                          $(this).closest("tr").prev("tr").html(trd);
-                           $(this).closest("tr").prev("tr").show("fast");
-                          
-                      
-                            $(".editar").on( "click", function() {
-                            
-                            $(this).closest("tr").hide("slow",function(){
-                                 $(this).closest("tr").next("tr").show("fast");
-                                
-                            
-                            });
-                          });
-
-                      });
+                    var ida = 0;
 
 
-                      });
-
-                        
-
-                    });
-
-                  
-                    
-                      
-              }
+          $('#tabla tr td').click(function () {
+            var a = $(this).parent('tr');
+            ida = a.attr("id");
+            
+            a.css('background-color', '#688A7E');
+            a.css('color', '#fff');
+            $('#tabla tr td').click(function () {
+              var b = $(this).parent('tr');
+              //ida = a.attr("id"); error
+              ida = b.attr("id");
+              a.css('background-color', '#fff');
+              a.css('color', '#797979');
+              b.css('background-color', '#688A7E');
+              b.css('color', '#fff');
               
             });
+            
+              $("#cod_fun").attr('value', ida);
+              $("#seleccionar").removeClass("btn-default disabled");
+              $("#seleccionar").addClass('btn-primary');
+            
+           
+          }); 
+           }
+              
+            });
+
+          
 
           }else{
 
             //$('#tabla').children( 'tr:not(:first)' ).remove();
             $('tr:not(:first)').remove();
-            var primeraFila = "<tr>";
-            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.N&deg; </td>";      
+            var primeraFila = "<tr id = 'ejemplo'>";
+            primeraFila +="<td class = 'verdeoscuroimg'> Ejem.N&uacute;mero </td>";      
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.C&eacute;dula </td>";              
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre1 </td>";                            
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Nombre2 </td>";
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido1 </td>";                            
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Apellido2 </td>";
             primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Credencial </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Status </td>";
-            primeraFila+="<td class = 'verdeoscuroimg' > Ejem.Acci&oacute;n </td>";
+           
             primeraFila += "</tr>";
             $("#tabla").append(primeraFila);
             $("#cargando").html("");
+
           }
-         
+
+
+
         });
 
-
-            $("#cancelar").click(function () {
-              
-                          
-              $("#myModal").modal('hide');
-               $("#feedback_form")[0].reset();
-            });  
-          
+        
          
-          
+           
+           $("#cancelar").click(function () {
+                           
+              $("#myModal").modal('hide');
+              $("#feedback_form")[0].reset();
+
+            });
+            
+
+         
       });
 
-   
+    
 
 
 

@@ -80,14 +80,6 @@ CREATE TABLE Detenido
 ) 
 ;
 
-CREATE TABLE Mer_Dem
-(
-	codigo_mer_dem INTEGER NOT NULL AUTO_INCREMENT,
-	tipo_mer_dem VARCHAR(50) NOT NULL,
-	categoria_mer_dem VARCHAR(50) NOT NULL,
-	PRIMARY KEY (codigo_mer_dem)
-) 
-;
 
 CREATE TABLE Acta
 (
@@ -112,21 +104,10 @@ CREATE TABLE Bitacora
 	codigo_bit INTEGER NOT NULL AUTO_INCREMENT,
 	fecha_bit DATE NOT NULL,
 	hora_bit TIME NOT NULL,
-	proceso_bit VARCHAR(255) NOT NULL,
+	proceso_bit TEXT NOT NULL,
 	cod_usu INTEGER NOT NULL,
 	PRIMARY KEY (codigo_bit),
 	FOREIGN KEY (cod_usu) REFERENCES Usuario (codigo_usu)
-) 
-;
-
-
-CREATE TABLE Especificacion
-(
-	codigo_esp INTEGER NOT NULL AUTO_INCREMENT,
-	tipo_esp VARCHAR(50) NOT NULL,
-	cod_mer_dem INTEGER NOT NULL,
-	PRIMARY KEY (codigo_esp),
-	FOREIGN KEY (cod_mer_dem) REFERENCES Mer_Dem (codigo_mer_dem)
 ) 
 ;
 
@@ -146,11 +127,16 @@ CREATE TABLE Acta_Per
 CREATE TABLE Fun_Mer_Dem
 (
 	codigo_fun_mer INTEGER NOT NULL AUTO_INCREMENT,
-	cod_mer_dem INTEGER NOT NULL,
 	cod_per INTEGER NOT NULL,
+	fecha_fun_mer DATE NOT NULL,
+	dependencia_fun_mer VARCHAR(50) NOT NULL,
+	comentario_fun_mer VARCHAR(250) NOT NULL,
+	tipo_mer_dem VARCHAR(50) NOT NULL,
+	categoria_mer_dem VARCHAR(50) NOT NULL,
+	especificacion_mer_dem  VARCHAR(50),
 	PRIMARY KEY (codigo_fun_mer),
-	FOREIGN KEY (cod_per) REFERENCES Persona (codigo_per),
-	FOREIGN KEY (cod_mer_dem) REFERENCES Mer_Dem (codigo_mer_dem)
+	FOREIGN KEY (cod_per) REFERENCES Persona (codigo_per)
+	
 ) 
 ;
 

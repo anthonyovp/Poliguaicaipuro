@@ -787,7 +787,7 @@ session_start();
                                           <label for="numero" class="control-label col-lg-3"> N&uacute;mero <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control" id="numero" name="numero"  type="text" required />
+                                                <input class="form-control" id="numero" name="numero"  type="number" min="1" max="10000000000" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
                                           </div>
@@ -806,7 +806,7 @@ session_start();
                                           <label for="ut" class="control-label col-lg-3"> Unds Tributarias <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control " id="ut" type="text" name="ut" required />
+                                                <input class="form-control " id="ut" type="text" name="ut" minlength="1" maxlength="50" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
                                           </div>
@@ -815,7 +815,7 @@ session_start();
                                           <label for="monto" class="control-label col-lg-3"> Monto <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="monto" type="text" name="monto" required />
+                                              <input class="form-control " id="monto" type="number" name="monto" min="1" max="10000000000000"required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -824,7 +824,7 @@ session_start();
                                           <label for="comentario" class="control-label col-lg-3"> Comentario <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="comentario" type="text" name="comentario" required />
+                                              <input class="form-control " id="comentario" type="text" name="comentario" minlength="1" maxlength="500" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -844,7 +844,7 @@ session_start();
                                           <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control" id="cedula" name="cedula" minlength="5" type="text" required />
+                                                <input class="form-control" id="cedula" name="cedula" minlength="7" maxlength="10" type="text" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
                                           </div>
@@ -853,7 +853,7 @@ session_start();
                                           <label for="nombre1" class="control-label col-lg-3">Primer Nombre <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="nombre1" type="text" name="nombre1" required />
+                                              <input class="form-control " id="nombre1" type="text" name="nombre1" minlength="1" maxlength="50" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -863,7 +863,7 @@ session_start();
                                           <label for="apellido1" class="control-label col-lg-3">Primer Apellido <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="apellido1" type="text" name="apellido1" required />
+                                              <input class="form-control " id="apellido1" type="text" name="apellido1" minlength="1" maxlength="50" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -882,7 +882,7 @@ session_start();
                                           <label for="placa" class="control-label col-lg-3"> Placa <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control" id="placa" name="placa" minlength="5" type="text" required />
+                                              <input class="form-control" id="placa" name="placa" minlength="6" maxlength="10" type="text" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -891,7 +891,7 @@ session_start();
                                           <label for="marca" class="control-label col-lg-3"> Marca Veh&iacute;culo <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="marca" type="text" name="marca" required />
+                                              <input class="form-control " id="marca" type="text" name="marca" minlength="1" maxlength="50" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -903,7 +903,7 @@ session_start();
                                           <label for="modelo" class="control-label col-lg-3">  Modelo Veh&iacute;culo <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="modelo" type="text" name="modelo" required />
+                                              <input class="form-control " id="modelo" type="text" name="modelo" minlength="1" maxlength="50" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -913,7 +913,7 @@ session_start();
                                           <label for="tipo" class="control-label col-lg-3"> Tipo Veh&iacute;culo<span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="tipo" type="text" name="tipo" required />
+                                              <input class="form-control " id="tipo" type="text" name="tipo" minlength="1" maxlength="50" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
@@ -1105,6 +1105,7 @@ session_start();
            
             primeraFila += "</tr>";
             $("#tabla").append(primeraFila);
+            $("#cargando").html("");
 
           }
 

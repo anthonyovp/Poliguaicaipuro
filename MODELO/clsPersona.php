@@ -1,5 +1,8 @@
 <?php
+	session_start();
 	include_once("clsDatos.php");
+
+
 
 	class clsPersona extends clsDatos{
 		private $cedula;
@@ -56,6 +59,18 @@
 			$this->apellido2 = $apellido2;
 		}
 		
+		function begin(){
+   			
+		}
+
+		function commit(){
+    		mysql_query("COMMIT");
+		}
+
+		function rollback(){
+    		mysql_query("ROLLBACK");
+		}
+
 
 		public function incluirPersona($cedula,$nombre1,$nombre2,$apellido1,$apellido2){
 	       // $objDatos = new clsDatos();
@@ -68,6 +83,31 @@
 
 		    return $id;
     	} 
+
+    	public function incluirFuncionario($id,$credencial){
+	       // $objDatos = new clsDatos();
+			$this->objDatos= new clsDatos();
+		   $this->objDatos->conectar();
+		   
+		   try{
+		   		    $sql = "INSERT INTO Funcionario(credencial_fun,cod_per,status_fun) VALUES ('$credencial','$id','activo')";
+	       			$this->objDatos->ejecutar($sql);
+		   			
+		   			
+
+		   }
+		   catch (Exception $e) {
+    			rollback(); // transaction rolls back
+    			echo "<script>alert('Error al Insertar')</script>";
+    			exit;
+			}
+	   		$this->objDatos->desconectar();
+		  
+		   
+	   	   return;
+    	} 
+
+
 
     	public function consultarCod($sql){
 
@@ -92,18 +132,7 @@
 
     	}
 
-    	public function incluirFuncionario($id,$credencial){
-	       // $objDatos = new clsDatos();
-			$this->objDatos= new clsDatos();
-		   $this->objDatos->conectar();
-		   
-	       $sql = "INSERT INTO Funcionario(credencial_fun,cod_per,status_fun) VALUES ('$credencial','$id','activo')";
-	       $this->objDatos->ejecutar($sql);
-		   $this->objDatos->desconectar();
-		  
-		   
-	   	   return;
-    	} 
+    	
 
     	public function incluirResena($id,$fechaN,$direccion){
 	       // $objDatos = new clsDatos();
@@ -235,6 +264,79 @@
 	   	   return;
     	}
 
+    	public function traerdatos($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM funcionario INNER JOIN persona ON funcionario.cod_per=persona.codigo_per WHERE funcionario.cod_per='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+
+    	public function traerdatosper($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM  persona WHERE codigo_per='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+
+    	public function traerdatosdet($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM  detenido WHERE cod_per='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+    	public function traerdatosper2($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM  persona WHERE cedula_per='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
 
 
 

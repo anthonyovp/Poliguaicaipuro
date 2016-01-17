@@ -37,12 +37,16 @@ session_start();
     <link href="../css/style-responsive.css" rel="stylesheet" />
   <link href="../css/xcharts.min.css" rel=" stylesheet"> 
   <link href="../css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
+
+
+   
   </head>
 
  
@@ -139,7 +143,7 @@ session_start();
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile.html"><i class="icon_profile"></i> Mi Perfil</a>
+                                <a href="Perfil.php"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             
                             <li>
@@ -171,7 +175,7 @@ session_start();
         $tipoU = $obj->Autenticado();
 
 
-        echo'
+         echo'
         <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -182,6 +186,7 @@ session_start();
               if($tipoU=="Administrador1"||$tipoU=="SuperUsuario"){
                   echo'             
                   <li class="active">
+                   <li class="active">
                       <a class="" href="Usuario.php">                           
                             <i class="icon_documents_alt"></i>
                             <span>Actas Policiales</span>
@@ -196,7 +201,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
+                            <li><a class="" href="Meritos Demeritos.php">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -208,10 +213,11 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Fechas</a></li>
-                          <li><a class="" href="grids.html">Estad&iacute;sticas por Sector</a></li>
+                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Años</a></li>
+                          <li><a class="" href="GraficasActasSector.php">Estad&iacute;sticas por Sectores</a></li>
                       </ul>
                   </li>
+                  
                   ';
 
 
@@ -219,7 +225,7 @@ session_start();
               if($tipoU=="Administrador2"||$tipoU=="SuperUsuario"){
                   echo'
 
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Reseñas Policiales</span>
@@ -288,7 +294,7 @@ session_start();
                if($tipoU=="SuperUsuario"){
              echo'
                   
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Usuarios</span>
@@ -307,7 +313,7 @@ session_start();
                   </li>   
                  
                   <li class="sub-menu">
-                      <a href="Resena.php" class="">
+                      <a href="Bitacora.php" class="">
                           <i class="icon_table"></i>
                            <span>Manejar Bitácora</span>
                           
@@ -773,7 +779,7 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Usuario.php" enctype = "multipart/form-data">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Usuario.php" enctype = "multipart/form-data" onSubmit="return validar(this)">
                                     <div class="form-group ">
                                           
                                           <div class="col-lg-1">
@@ -782,12 +788,13 @@ session_start();
                                           <div class="col-lg-11">
                                                   <output  id="list" class="cargarimagen" ></output>
                                                   <label for="nombre" class="control-label col-lg-3">Foto<span class="required">*</span></label><br><br>
-                                                  <input type="file" id="files" class="adjuntedefoto" name="files" required/>
+                                                  <input type="file" id="files" onblur="javascript:validar();"  class="adjuntedefoto" name="files" />
                                                    
                                  
                                          
                                       
                                                   <br><br>
+                                                   <div class="alert col-lg-12 " id="txtfiles" ></div>
 
                                            </div>        
                                     </div>
@@ -800,13 +807,16 @@ session_start();
                                                       <div class="col-lg-9">
                                                             <div class="input-group">
                                                    
-                                                                  <input class="form-control " id="nombre" type="text" name="nombre" required />
+                                                                  <input class="form-control " id="nombre" type="text" name="nombre" onblur="javascript:validar();"/>
                                                                   <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
-                        
+
                                                              </div>
-                                              
+
                                                        </div>
-                        
+                                                       <div class="alert col-lg-12 " id="txtnombre" ></div>
+
+                                                       
+                                                    
                                              
                                               
                                                   </div>
@@ -815,34 +825,28 @@ session_start();
                                                       <div class="col-lg-9">
                                                           <div class="input-group">
                                                   
-                                                              <input class="form-control " id="apellido" type="text" name="apellido" required />
+                                                              <input class="form-control " id="apellido" type="text" name="apellido"  onblur="javascript:validar();"/>
                                                                 <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                                           </div>
                                               
                                                       </div>
+                                                      <div class="alert col-lg-12 " id="txtapellido" ></div>
                                                   </div>
 
-
-
-                                           
-
-                                     
-                                      
-                                          
-                                      
                                       
                                       <div class="form-group ">
                                           <label for="correo" class="control-label col-lg-3">Correo<span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="correo" type="email" name="correo" required />
+                                                  <input class="form-control " id="correo" type="email" name="correo"  onblur="javascript:validar();"/>
                                                   <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtcorreo" ></div>
                                       </div>
 
                                       <div class="form-group ">
@@ -850,12 +854,13 @@ session_start();
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="clave" type="password" name="clave" required />
+                                                  <input class="form-control " id="clave" type="password" name="clave" onblur="javascript:validar();"/>
                                                   <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtclave" ></div>
                                       </div>
 
                                       <div class="form-group ">
@@ -863,19 +868,23 @@ session_start();
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="clave2" type="password" name="clave2" required />
+                                                  <input class="form-control " id="clave2" type="password" name="clave2" onblur="javascript:validar();" />
                                                   <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtclave2" ></div>
                                       </div>
 
                                       <div class="form-group ">
-                                          <label for="tipo_usuario" class="control-label col-lg-3">Tipo de Usuario <span ></span></label>
+                                          <label for="tipo_usuario" class="control-label col-lg-3">Tipo de Usuario <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                                  <select name="tipo_usuario" class="form-control " id="tipo_usuario" required />
+                                                  <select name="tipo_usuario" class="form-control " id="tipo_usuario" onblur="javascript:validar();" required />
+                                                      <option value="Seleccione">
+                                                          Seleccione...
+                                                      </option>
                                                       <option value="Administrador1">
                                                           Administrador 1 / Actas Policiales - Multas de Tránsito 
                                                       </option>
@@ -892,15 +901,30 @@ session_start();
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txttipo_usuario" ></div>
                                       </div>
                                       
-                                     
-                                      <div class="form-group">
+                                     <div class="form-group">
                                           <div class="col-lg-offset-3 col-lg-9">
-                                              <input class="btn btn-primary" type="submit" value="Guardar" name="Guardar">
+                                           
+                                              <span class="required">*</span><span class="camposob"> Estos Campos son Obligatorios.</span>
+                                           
                                               
                                           </div>
                                       </div>
+
+
+                                      <div class="form-group">
+                                          <div class="col-lg-offset-3 col-lg-9">
+
+                                              <input class="btn btn-primary" type="submit" value="Guardar" id="btn" name="Guardar">
+                                              
+                                          </div>
+                                      </div>
+
+
+                                      
+                                      
                                   </form>
                               </div>
 
@@ -919,6 +943,7 @@ session_start();
     
 
     <!-- javascripts -->
+    
     <script src="../js/jquery.js"></script>
   <script src="../js/jquery-ui-1.10.4.min.js"></script>
     <script src="../js/jquery-1.8.3.min.js"></script>
@@ -961,6 +986,203 @@ session_start();
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/main.js"></script>
   
+
+  <script type="text/javascript">
+
+      function validaremail(correo){
+          var tester= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
+          return tester.test(correo);
+          
+      }
+
+      function validarclave(clave){
+          var tester= /^([a-zA-Z0-9*.,-_+´]{4,20})+$/;
+          return tester.test(clave);
+          
+      }
+
+      function validarsololetras(atributo){
+          var tester= /^([a-zA-Z0´])+$/;
+          return tester.test(atributo);
+      }
+
+      function validarsolonumeros(atributo){
+          var tester= /^([0-9])+$/;
+          return tester.test(atributo);
+      }
+
+      
+
+
+
+
+      function validar(){
+          var nombre=document.getElementById('nombre').value;
+          var apellido=document.getElementById('apellido').value;
+          var correo=document.getElementById('correo').value;
+          var files=document.getElementById('files').value;
+          var clave=document.getElementById('clave').value;
+          var clave2=document.getElementById('clave2').value;
+          var tipo_usuario=document.getElementById('tipo_usuario').value;
+         
+          if(files==""){
+            $('#txtfiles').html('Por favor seleccione una foto').slideDown(500);
+            $('#files').focus();
+            return false;
+          }
+          else{
+            $('#txtfiles').html('').slideUp(300);
+
+          }
+
+
+          if(nombre==""){
+            $('#txtnombre').html('Este Campo es Obligatorio. Por favor ingrese el Nombre').slideDown(500);
+            $('#nombre').focus();
+            return false;
+          }
+          else{
+            $('#txtnombre').html('').slideUp(300);
+
+          }
+          
+          if(validarsololetras(nombre)==false){
+            $('#txtnombre').html('El Nombre no puede contener dígitos').slideDown(500);
+            $('#nombre').focus();
+            return false;
+          }
+          else{
+            $('#txtnombre').html('').slideUp(300);
+
+          }
+
+          if(apellido==""){
+            $('#txtapellido').html('Este Campo es Obligatorio. Por favor ingrese el Apellido').slideDown(500);
+            $('#apellido').focus();
+            return false;
+          }
+          else{
+            $('#txtapellido').html('').slideUp(300);
+
+          }
+
+          if(validarsololetras(apellido)==false){
+            $('#txtapellido').html('El Apellido no puede contener dígitos').slideDown(500);
+            $('#apellido').focus();
+            return false;
+          }
+          else{
+            $('#txtapellido').html('').slideUp(300);
+
+          }
+
+
+          if(correo==""){
+            $('#txtcorreo').html('Este Campo es Obligatorio. Por favor ingrese el Correo').slideDown(500);
+            $('#correo').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtcorreo').html('').slideUp(300);
+            
+
+          }
+
+          if(validaremail(correo)==false){
+            $('#txtcorreo').html('Por favor ingrese un Correo válido').slideDown(500);
+            $('#correo').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtcorreo').html('').slideUp(300);
+            
+
+          }
+
+          if(clave==""){
+            $('#txtclave').html('Este Campo es Obligatorio. Por favor ingrese la Contraseña').slideDown(500);
+            $('#clave').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave').html('').slideUp(300);
+            
+
+          }
+
+          if(validarclave(clave)==false){
+            $('#txtclave').html('La Contraseña debe estar comprendida entre 4 y 20 caracteres').slideDown(500);
+            $('#clave').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave').html('').slideUp(300);
+
+          }
+
+
+          if(clave2==""){
+            $('#txtclave2').html('Este Campo es Obligatorio. Por favor confirme la Contraseña').slideDown(500);
+            $('#clave2').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+            
+
+          }
+
+          if(validarclave(clave2)==false){
+            $('#txtclave2').html('La Contraseña debe estar comprendida entre 4 y 20 caracteres').slideDown(500);
+            $('#clave2').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+
+          }
+
+
+          if(clave!=clave2){
+            $('#txtclave2').html('Las Contraseñas no coinciden. Ingrese la Contraseña Nuevamente').slideDown(500);
+            $('#clave').focus();
+             $('#clave').val('');
+             $('#clave2').val('');
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+          }
+
+
+          if(tipo_usuario=="Seleccione"){
+            $('#txttipo_usuario').html('Por favor seleccione un tipo de Usuario').slideDown(500);
+            $('#tipo_usuario').focus();
+            
+            return false;
+            
+          }
+          else{
+            $('#txttipo_usuario').html('').slideUp(300);
+          }
+      }
+
+      
+    </script>
+
+
+
+
+
+
+
   <script>
     
       

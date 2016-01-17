@@ -136,10 +136,10 @@ session_start();
                 ?></span>
                             <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu extended logout">
+                       <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile.html"><i class="icon_profile"></i> Mi Perfil</a>
+                                <a href="Perfil.php"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             
                             <li>
@@ -171,7 +171,7 @@ session_start();
         $tipoU = $obj->Autenticado();
 
 
-        echo'
+         echo'
         <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -182,6 +182,7 @@ session_start();
               if($tipoU=="Administrador1"||$tipoU=="SuperUsuario"){
                   echo'             
                   <li class="active">
+                   <li class="active">
                       <a class="" href="Usuario.php">                           
                             <i class="icon_documents_alt"></i>
                             <span>Actas Policiales</span>
@@ -196,7 +197,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
+                            <li><a class="" href="Meritos Demeritos.php">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -208,10 +209,11 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Fechas</a></li>
-                          <li><a class="" href="grids.html">Estad&iacute;sticas por Sector</a></li>
+                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Años</a></li>
+                          <li><a class="" href="GraficasActasSector.php">Estad&iacute;sticas por Sectores</a></li>
                       </ul>
                   </li>
+                  
                   ';
 
 
@@ -219,7 +221,7 @@ session_start();
               if($tipoU=="Administrador2"||$tipoU=="SuperUsuario"){
                   echo'
 
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Reseñas Policiales</span>
@@ -288,7 +290,7 @@ session_start();
                if($tipoU=="SuperUsuario"){
              echo'
                   
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Usuarios</span>
@@ -307,7 +309,7 @@ session_start();
                   </li>   
                  
                   <li class="sub-menu">
-                      <a href="Resena.php" class="">
+                      <a href="Bitacora.php" class="">
                           <i class="icon_table"></i>
                            <span>Manejar Bitácora</span>
                           
@@ -748,7 +750,7 @@ session_start();
                           
                         
                       </table>   
-                      <button type="button" class="btn btn-default disabled center-block"  data-toggle="modal" data-target="#myModal" id = "seleccionar"> Seleccionar &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span></button>    
+                      <button type="button" class="btn btn-default disabled center-block"  onclick="javascript:vaciarcampos();" data-toggle="modal" data-target="#myModal" id = "seleccionar"> Seleccionar &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span></button>    
                 </div>
 
               
@@ -778,7 +780,7 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="../CONTROLADOR/Controlador_Acta.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="../CONTROLADOR/Controlador_Acta.php" onSubmit="return validar(this)">
                                     
                                     
                                     <div id = "oficiales" class = "oculto">
@@ -789,84 +791,110 @@ session_start();
                                           <label for="numero" class="control-label col-lg-3"> N&uacute;mero <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control" id="numero" name="numero"  type="number" min="1" max="9999999" required />
+                                                <input class="form-control" id="numero" name="numero"  type="number" autofocus min="1" max="999999999" autofocus onblur="javascript:validar();" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
+                                              <div class="alert col-lg-12 " id="txtnumero" ></div>
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="fecha" class="control-label col-lg-3"> Fecha <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control " id="fecha" type="date" name="fecha" required />
+                                                <input class="form-control " id="fecha" type="date" name="fecha" onblur="javascript:validar();" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtfecha" ></div>
                                       </div>
 
                                       <div class="form-group ">
                                           <label for="hora" class="control-label col-lg-3"> Hora <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control " id="hora" type="time" name="hora" placeholder="00:00 am" required />
+                                                <input class="form-control " id="hora" type="time" name="hora" placeholder="00:00 am" onblur="javascript:validar();" required />
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txthora" ></div>
                                       </div>
                                       
                                       <div class="form-group ">
                                           <label for="tipo" class="control-label col-lg-3"> Tipo <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                               <div class="input-group">
-                                                <input class="form-control " id="tipo" type="text" name="tipo" minlength="1" maxlength="50" required />
-                                                <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+
+                                                <select name="tipo" class="form-control " onblur="javascript:validar();" id="tipo" required />
+                                                      <option value="Seleccione">
+                                                          Seleccione...
+                                                      </option>
+                                                      <option value="Policial">
+                                                          Policial 
+                                                      </option>
+                                                      <option value="Informativa">
+                                                          Informativa 
+                                                      </option>
+                                                      <option value="Diligente">
+                                                          Diligente
+                                                      </option>
+                                                  </select>
+                                                  
+                                                  <span class="input-group-addon"> <a class="" href="#modal14">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                               </div>
+                                              <div class="alert col-lg-12 " id="txttipo" ></div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txttipo" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="unidad" class="control-label col-lg-3"> Unidad <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="unidad" type="text" name="unidad" minlength="1" maxlength="50" required />
+                                              <input class="form-control " id="unidad" type="text" name="unidad" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtunidad" ></div>
                                       </div>
                                         <div class="form-group ">
                                           <label for="dependencia" class="control-label col-lg-3"> Dependencia <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="dependencia" type="text" name="dependencia" minlength="1" maxlength="50" required />
+                                              <input class="form-control " id="dependencia" type="text" name="dependencia" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtdependencia" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="sector" class="control-label col-lg-3">  Sector <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="sector" type="text" name="sector" minlength="1" maxlength="50" required />
+                                              <input class="form-control " id="sector" type="text" name="sector" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtsector" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="comentario" class="control-label col-lg-3"> Comentario <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="comentario" type="text" name="comentario" minlength="1" maxlength="5000" required />
+                                              <input class="form-control " id="comentario" type="text" name="comentario" minlength="1" maxlength="5000" onblur="javascript:validar();" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtcomentario" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="cod_pro" class="control-label col-lg-3"> Cdo. Procedimiento <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
-                                              <input class="form-control " id="cod_pro" type="number" name="cod_pro" min="1" max="999" required />
+                                              <input class="form-control " id="cod_pro" type="number" name="cod_pro" min="1" max="999"  onblur="javascript:validar();" required />
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtcod_pro" ></div>
+
                                       </div>
                                     
            
@@ -941,6 +969,388 @@ session_start();
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/main.js"></script>
   
+
+
+  <script type="text/javascript">
+
+      function vaciarcampos(){
+        $('#numero').val('');
+        $('#fecha').val('');
+        $('#hora').val('');
+        $('#tipo').val('Seleccione');
+        $('#unidad').val('');
+        $('#dependencia').val('');
+        $('#sector').val('');
+        $('#comentario').val('');
+        $('#cod_pro').val('');
+          
+          
+      }
+
+
+      function validaremail(correo){
+          var tester= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
+          return tester.test(correo);
+          
+      }
+
+      function validarclave(clave){
+          var tester= /^([a-zA-Z0-9*.,-_+´]{4,20})+$/;
+          return tester.test(clave);
+          
+      }
+
+      function validarsololetras(atributo){
+          var tester= /^([a-zA-Z0´])+$/;
+          return tester.test(atributo);
+      }
+
+      function validarsolonumeros(atributo){
+          var tester= /^([0-9])+$/;
+          return tester.test(atributo);
+      }
+
+      function validarnumero(atributo){
+          var tester= /^([0-9+-]{1,999999})+$/;
+
+          return tester.test(atributo);
+      }
+
+      
+
+
+
+
+      function validar(){
+          var numero=document.getElementById('numero').value;
+          var fecha=document.getElementById('fecha').value;
+          var hora=document.getElementById('hora').value;
+          var tipo=document.getElementById('tipo').value;
+          var unidad=document.getElementById('unidad').value;
+          var dependencia=document.getElementById('dependencia').value;
+          var sector=document.getElementById('sector').value;
+          var comentario=document.getElementById('comentario').value;
+          var cod_pro=document.getElementById('cod_pro').value;
+         
+         //Aquí Obtengo la Fecha Actual
+          var diaB=<?php echo date('d')?>;
+          var mesB=<?php echo date('m')?>;
+           var anoB=<?php echo date('Y')?>;
+
+           //Aqui Obtengo la Fecha del Formulario
+          var array_fecha = fecha.split("-")
+          var ano = parseInt(array_fecha[0]);
+          var mes = parseInt(array_fecha[1]);
+          var dia = parseInt(array_fecha[2]);
+
+           //Aqui Obtengo la hora del Formulario
+          var array_hora = hora.split(":")
+          var hora = parseInt(array_hora[0]);
+          var minutos = parseInt(array_hora[1]);
+
+
+          if(numero==""){
+            $('#txtnumero').html('Este Campo es Obligatorio. Por favor ingrese el número del Acta').slideDown(500);
+            $('#numero').focus();
+            return false;
+          }
+          else{
+            $('#txtnumero').html('').slideUp(300);
+
+          }
+
+          if(validarnumero(numero)==false){
+            $('#txtnumero').html('El número del Acta debe estar comprendido entre 1 y 999999 caracteres').slideDown(500);
+            $('#numero').focus();
+            return false;
+          }
+          else{
+            $('#txtnumero').html('').slideUp(300);
+
+          }
+
+            if((numero<1)||(numero>999999999)){
+            $('#txtnumero').html('El número del Acta debe estar comprendido entre 1 y 999999999').slideDown(500);
+            $('#numero').focus();
+            return false;
+          }
+          else{
+            $('#txtnumero').html('').slideUp(300);
+
+          }
+
+          if((!dia)||(!mes)||(!ano)){
+            $('#txtfecha').html('Por favor verifique la fecha').slideDown(500);
+            $('#fecha').focus();
+            return false;
+          }
+          else{
+            $('#txtfecha').html('').slideUp(300);
+          }
+
+/*
+          if(dia<1){
+            $('#txtfecha').html('El día ingresado es incorrecto. El día no puede ser menor a 1').slideDown(500);
+            $('#fecha').focus();
+
+            return false;
+          }
+          else{
+            $('#txtfecha').html('').slideUp(300);
+          }
+
+          
+
+          if(mes==2){
+           
+            if(dia>29){
+              $('#txtfecha').html('El día ingresado es incorrecto. El día no puede ser mayor a 29').slideDown(500);
+              $('#fecha').focus();
+
+              return false;
+            }
+            else{
+              $('#txtfecha').html('').slideUp(300);
+            }
+            
+          }
+          else if(mes==1||mes==3||mes==5||mes==7||mes==8||mes==10||mes==12){
+              if(dia>31){
+              $('#txtfecha').html('El día ingresado es incorrecto. El día no puede ser mayor a 31').slideDown(500);
+              $('#fecha').focus();
+
+              return false;
+            }
+            else{
+              $('#txtfecha').html('').slideUp(300);
+            }
+          }
+          else if(mes==4||mes==6||mes==9||mes==11){
+                if(dia>30){
+              $('#txtfecha').html('El día ingresado es incorrecto. El día no puede ser mayor a 30').slideDown(500);
+              $('#fecha').focus();
+
+              return false;
+            }
+            else{
+              $('#txtfecha').html('').slideUp(300);
+            }
+          }
+          else{
+            $('#txtfecha').html('El mes ingresado es incorrecto. El mes debe estar comprendido entre 1 y 12').slideDown(500);
+              $('#fecha').focus();
+
+              return false;
+          }
+*/
+          if(ano<(anoB-1)){
+            $('#txtfecha').html('El año ingresado es incorrecto. No se pueden registrar actas con más de un año transcurrido').slideDown(500);
+            $('#fecha').focus();
+
+            return false;
+          }
+          else{
+            $('#txtfecha').html('').slideUp(300);
+
+          }
+
+
+          if(ano>anoB){
+            $('#txtfecha').html('El año ingresado es incorrecto. El año del Acta no puede ser mayor al año actual').slideDown(500);
+            $('#fecha').focus();
+
+            return false;
+          }
+          else{
+            $('#txtfecha').html('').slideUp(300);
+
+          }
+
+          
+          
+          
+          
+          if((!hora)||(!minutos)){
+            $('#txthora').html('Por favor verifique la hora').slideDown(500);
+            $('#hora').focus();
+            return false;
+          }
+          else{
+            $('#txthora').html('').slideUp(300);
+
+          }
+
+
+          if(tipo=="Seleccione"){
+            $('#txttipo').html('Por favor Seleccione un Tipo').slideDown(500);
+            $('#tipo').focus();
+            return false;
+          }
+          else{
+            $('#txttipo').html('').slideUp(300);
+
+          }
+
+
+          if(unidad==""){
+            $('#txtunidad').html('Este Campo es Obligatorio. Por favor ingrese la Unidad').slideDown(500);
+            $('#unidad').focus();
+            return false;
+          }
+          else{
+            $('#txtunidad').html('').slideUp(300);
+
+          }
+
+
+          if(dependencia==""){
+            $('#txtdependencia').html('Este Campo es Obligatorio. Por favor ingrese la Dependencia').slideDown(500);
+            $('#dependencia').focus();
+            return false;
+          }
+          else{
+            $('#txtdependencia').html('').slideUp(300);
+
+          }
+
+
+          if(sector==""){
+            $('#txtsector').html('Este Campo es Obligatorio. Por favor ingrese el Sector').slideDown(500);
+            $('#sector').focus();
+            return false;
+          }
+          else{
+            $('#txtsector').html('').slideUp(300);
+
+          }
+
+
+          if(comentario==""){
+            $('#txtcomentario').html('Este Campo es Obligatorio. Por favor ingrese un comentario').slideDown(500);
+            $('#comentario').focus();
+            return false;
+          }
+          else{
+            $('#txtcomentario').html('').slideUp(300);
+
+          }
+
+          if(cod_pro==""){
+            $('#txtcod_pro').html('Este Campo es Obligatorio. Por favor ingrese el código del procedimiento').slideDown(500);
+            $('#cod_pro').focus();
+            return false;
+          }
+          else{
+            $('#txtcod_pro').html('').slideUp(300);
+
+          }
+
+
+
+
+/*
+          if(validarsololetras(apellido)==false){
+            $('#txtapellido').html('El Apellido no puede contener dígitos').slideDown(500);
+            $('#apellido').focus();
+            return false;
+          }
+          else{
+            $('#txtapellido').html('').slideUp(300);
+
+          }
+
+
+          if(correo==""){
+            $('#txtcorreo').html('Este Campo es Obligatorio. Por favor ingrese el Correo').slideDown(500);
+            $('#correo').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtcorreo').html('').slideUp(300);
+            
+
+          }
+
+          if(validaremail(correo)==false){
+            $('#txtcorreo').html('Por favor ingrese un Correo válido').slideDown(500);
+            $('#correo').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtcorreo').html('').slideUp(300);
+            
+
+          }
+
+          if(clave==""){
+            $('#txtclave').html('Este Campo es Obligatorio. Por favor ingrese la Contraseña').slideDown(500);
+            $('#clave').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave').html('').slideUp(300);
+            
+
+          }
+
+          if(validarclave(clave)==false){
+            $('#txtclave').html('La Contraseña debe estar comprendida entre 4 y 20 caracteres').slideDown(500);
+            $('#clave').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave').html('').slideUp(300);
+
+          }
+
+
+          if(clave2==""){
+            $('#txtclave2').html('Este Campo es Obligatorio. Por favor confirme la Contraseña').slideDown(500);
+            $('#clave2').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+            
+
+          }
+
+          if(validarclave(clave2)==false){
+            $('#txtclave2').html('La Contraseña debe estar comprendida entre 4 y 20 caracteres').slideDown(500);
+            $('#clave2').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+
+          }
+
+
+          if(clave!=clave2){
+            $('#txtclave2').html('Las Contraseñas no coinciden. Ingrese la Contraseña Nuevamente').slideDown(500);
+            $('#clave').focus();
+             $('#clave').val('');
+             $('#clave2').val('');
+            
+            return false;
+          }
+          else{
+            $('#txtclave2').html('').slideUp(300);
+          }*/
+      }
+
+      
+    </script>
+
+
+
+
   <script>
     
       

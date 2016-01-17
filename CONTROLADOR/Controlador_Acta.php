@@ -4,8 +4,15 @@
 	
 		
     include_once("../MODELO/clsActa.php");
-   
-		
+    include_once("../MODELO/clsBitacora.php");
+    include_once("../MODELO/clsProcedimiento.php");
+    include_once("../MODELO/clsPersona.php");
+
+
+    
+ $lobjBitacora=new clsBitacora();
+  $lobjProcedimiento=new clsProcedimiento();
+  $lobjPersona=new clsPersona();
 		/*--------------------------------------------
 
 	     $codigo = 9;  
@@ -71,11 +78,47 @@
             $lobjActa = new clsActa();
             $cod_act = $lobjActa->incluirActa($numero,$fecha,$hora,$tipo,$comentario,$unidad,$sector,$dependencia,$cod_pro);
 
+            //Consulta para traer datos del procedimiento para usar en Bitácora
+           
+          $datos= $lobjProcedimiento->traerdatos($cod_pro);
+          $nombre1a=$datos[2];
+          //fin de consulta
+
+            //bitácora
+            date_default_timezone_set("America/Caracas");
+              $descripcion1="Se registró el Acta Número: ".$numero.", de fecha: ".$fecha.", hora: ".$hora.", tipo: ".$tipo.", con el Procedimiento: ".$nombre1a.".";
+              $fecha1=date("Y/n/j");
+              $hora1=date("h:i:s");
+              $cod_usu1=$_SESSION["codigo_usuario"];
+              $lobjBitacora->incluir($fecha1,$hora1,$descripcion1,$cod_usu1);
+              //bitácora
+
             if ( !empty($_POST["cod_fun"]) && is_array($_POST["cod_fun"]) ) { 
               
                 foreach ( $_POST["cod_fun"] as $cod_per ) { 
                         
-                        $lobjActa->incluirActaPersona($cod_act,$cod_per);
+            //Consulta para traer datos del Funcionario para usar en Bitácora
+           
+          $datos= $lobjPersona->traerdatos($cod_per);
+          $credenciala=$datos[1];
+          $cedulaa=$datos[5];
+          $nombre11a=$datos[6];
+          $nombre2a=$datos[7];
+          $apellido1a=$datos[8];
+          $apellido2a=$datos[9];
+
+          //fin de consulta
+
+            $lobjActa->incluirActaPersona($cod_act,$cod_per);
+            //bitácora
+            date_default_timezone_set("America/Caracas");
+              $descripcion1="Se agregó al Funcionario: ".$nombre11a." ".$nombre2a." ".$apellido1a." ".$apellido2a.", portador de la C.I: ".$cedulaa." y de la credencial: ".$credenciala." al Acta Número: ".$numero.", de fecha: ".$fecha.", hora: ".$hora.", tipo: ".$tipo." y de Procedimiento: ".$nombre1a.".";
+              $fecha1=date("Y/n/j");
+              $hora1=date("h:i:s");
+              $cod_usu1=$_SESSION["codigo_usuario"];
+              $lobjBitacora->incluir($fecha1,$hora1,$descripcion1,$cod_usu1);
+              //bitácora
+
                        
                  }
 
@@ -114,8 +157,34 @@
             $lobjActa->set_cod_pro($pro);
 
 
+            //Consulta para traer datos anteriores para usar en Bitácora
+
+          $datos= $lobjActa->traerdatos($codigo);
+          $numeroa=$datos[1];
+          $fechaa=$datos[2];
+          $horaa=$datos[3];
+          $tipoa=$datos[4];
+          $comentarioa=$datos[5];
+          $unidada=$datos[6];
+          $sectora=$datos[7];
+          $dependenciaa=$datos[8];
+          $codpa=$datos[9];
+          //fin consulta
+
+
+
             $data = $lobjActa->modificarActa($codigo);
             
+            //Bitácora
+         
+           date_default_timezone_set("America/Caracas");
+           $descripcion1="Se modificaron los datos del Acta. Datos Anteriores -> Número de Acta: ".$numeroa.",  Fecha: ".$fechaa.", Hora: ".$horaa.", Tipo de Acta: ".$tipoa.", Comentario: ".$comentarioa.", Unidad: ".$unidada.", Sector: ".$sectora.", Dependencia: ".$dependenciaa.", Código de Procedimiento: ".$codpa.".  
+           Nuevos Datos -> Número de Acta: ".$num.",  Fecha: ".$fec.", Hora: ".$horaa.", Tipo de Acta: ".$tip.", Comentario: ".$com.", Unidad: ".$uni.", Sector: ".$sec.", Dependencia: ".$dep.", Código de Procedimiento: ".$pro.".";
+           $fecha1=date("Y/n/j");
+            $hora1=date("h:i:s");
+            $cod_usu1=$_SESSION["codigo_usuario"];
+            $lobjBitacora->incluir($fecha1,$hora1,$descripcion1,$cod_usu1);
+            //Fin Bitácora
            
 
 

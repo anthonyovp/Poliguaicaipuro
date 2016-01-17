@@ -15,7 +15,8 @@
 			$this->bd="bd_poliguaicaipuro";
 		}
 
-
+		
+		
 		public function conectar(){
 			$this->conexion=mysqli_connect($this->servidor, $this->usuario, $this->clave, $this->bd);
 
@@ -71,7 +72,6 @@
 	public function ejecutar($sqlx){
     
 		    $this->consulta = mysqli_query($this->conexion,$sqlx);
-			//echo $sqlx."<br>";
 			
 			
 
@@ -88,6 +88,8 @@
 		        return 0;
 		    }
 		}
+
+
 
 
 		public function ejecutar2($sqlx){
@@ -162,7 +164,7 @@
     	public function consulta_query($sql){
     		//echo $sql;
     		//echo "<script> alert('existe".$sql."');</script>";
-    		//echo mysql_error();
+
     		return mysqli_query($this->conexion,$sql);
     		
     	}
@@ -174,10 +176,18 @@
     			$array[] = $fila;
     		}
 
-    		//echo mysql_error();
     		
+
     		return $array;
     	}
+    	
+    	public function autenticado(){
+			if(isset($_SESSION["email_usuario"]) && isset($_SESSION["tipo_usuario"])){
+				return $_SESSION["tipo_usuario"];
+			}else{
+				return false;
+			}
+		}
 
     	protected function resultadoActa($datos){
     		
@@ -283,14 +293,6 @@
     		
     		return $array;
     	}
-
-    	public function autenticado(){
-			if(isset($_SESSION["email_usuario"]) && isset($_SESSION["tipo_usuario"])){
-				return $_SESSION["tipo_usuario"];
-			}else{
-				return false;
-			}
-		}
 
 
     	public function dato($sql){

@@ -126,7 +126,7 @@ session_start();
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile.html"><i class="icon_profile"></i> Mi Perfil</a>
+                                <a href="Perfil.php"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             
                             <li>
@@ -158,7 +158,7 @@ session_start();
         $tipoU = $obj->Autenticado();
 
 
-        echo'
+         echo'
         <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -169,6 +169,7 @@ session_start();
               if($tipoU=="Administrador1"||$tipoU=="SuperUsuario"){
                   echo'             
                   <li class="active">
+                   <li class="active">
                       <a class="" href="Usuario.php">                           
                             <i class="icon_documents_alt"></i>
                             <span>Actas Policiales</span>
@@ -183,7 +184,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
+                            <li><a class="" href="Meritos Demeritos.php">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -195,10 +196,11 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Fechas</a></li>
-                          <li><a class="" href="grids.html">Estad&iacute;sticas por Sector</a></li>
+                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Años</a></li>
+                          <li><a class="" href="GraficasActasSector.php">Estad&iacute;sticas por Sectores</a></li>
                       </ul>
                   </li>
+                  
                   ';
 
 
@@ -206,7 +208,7 @@ session_start();
               if($tipoU=="Administrador2"||$tipoU=="SuperUsuario"){
                   echo'
 
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Reseñas Policiales</span>
@@ -275,7 +277,7 @@ session_start();
                if($tipoU=="SuperUsuario"){
              echo'
                   
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Usuarios</span>
@@ -294,7 +296,7 @@ session_start();
                   </li>   
                  
                   <li class="sub-menu">
-                      <a href="Resena.php" class="">
+                      <a href="Bitacora.php" class="">
                           <i class="icon_table"></i>
                            <span>Manejar Bitácora</span>
                           

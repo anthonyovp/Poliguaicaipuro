@@ -164,6 +164,24 @@
 	   	   
     	}
 
+    	public function traerdatos($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM Usuario WHERE codigo_usu='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
 		
 
 

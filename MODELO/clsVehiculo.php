@@ -94,6 +94,44 @@
     	}
 
 
+    	public function traerdatos($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM vehiculo WHERE codigo_veh='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+    	public function traerdatos2($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM vehiculo WHERE placa_veh='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+
+
 
 
 	}

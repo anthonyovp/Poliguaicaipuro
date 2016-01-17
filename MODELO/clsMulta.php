@@ -155,6 +155,24 @@
 	   	   return;
     	}
 
+    	public function traerdatos($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM multa WHERE codigo_mul='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
 
 
 	}

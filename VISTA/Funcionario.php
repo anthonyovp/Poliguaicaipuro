@@ -139,7 +139,7 @@ session_start();
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="profile.html"><i class="icon_profile"></i> Mi Perfil</a>
+                                <a href="Perfil.php"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             
                             <li>
@@ -182,6 +182,7 @@ session_start();
               if($tipoU=="Administrador1"||$tipoU=="SuperUsuario"){
                   echo'             
                   <li class="active">
+                   <li class="active">
                       <a class="" href="Usuario.php">                           
                             <i class="icon_documents_alt"></i>
                             <span>Actas Policiales</span>
@@ -196,7 +197,7 @@ session_start();
                       <ul class="sub">
                             <li><a class="" href="Actas.php">Actas</a></li>                          
                             <li><a class="" href="Funcionario.php">Funcionarios</a></li>
-                            <li><a class="" href="form_validation.html">Récords Disciplinarios</a></li>
+                            <li><a class="" href="Meritos Demeritos.php">Récords Disciplinarios</a></li>
                             <li><a class="" href="Procedimientos.php">Procedimientos</a></li>
 
                       </ul>
@@ -208,10 +209,11 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Fechas</a></li>
-                          <li><a class="" href="grids.html">Estad&iacute;sticas por Sector</a></li>
+                          <li><a class="" href="GraficasActas.php">Estad&iacute;sticas por Años</a></li>
+                          <li><a class="" href="GraficasActasSector.php">Estad&iacute;sticas por Sectores</a></li>
                       </ul>
                   </li>
+                  
                   ';
 
 
@@ -219,7 +221,7 @@ session_start();
               if($tipoU=="Administrador2"||$tipoU=="SuperUsuario"){
                   echo'
 
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Reseñas Policiales</span>
@@ -288,7 +290,7 @@ session_start();
                if($tipoU=="SuperUsuario"){
              echo'
                   
-                  <li class = "active">                     
+                   <li class = "active">                     
                       <a class="" href="Usuario.php">
                           <i class="icon_piechart"></i>
                           <span>Usuarios</span>
@@ -307,7 +309,7 @@ session_start();
                   </li>   
                  
                   <li class="sub-menu">
-                      <a href="Resena.php" class="">
+                      <a href="Bitacora.php" class="">
                           <i class="icon_table"></i>
                            <span>Manejar Bitácora</span>
                           
@@ -776,18 +778,19 @@ session_start();
                          
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Funcionario.php">
+                                  <form class="form-validate form-horizontal" id="feedback_form" method="post" action="../CONTROLADOR/Controlador_Funcionario.php" onSubmit="return validar(this)">
                                       <div class="form-group ">
                                           <label for="cedula" class="control-label col-lg-3">Cédula <span class="required">*</span></label>
                                             <div class="col-lg-9">
                                                <div class="input-group">
                                                   
-                                                  <input class="form-control" id="cedula" name="cedula" min="1000000" max="999999999" type="number" required />
+                                                  <input class="form-control" id="cedula" name="cedula" min="1000000" max="999999999" autofocus type="number" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtcedula" ></div>
                                       </div>
 
 
@@ -796,60 +799,65 @@ session_start();
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="nombre1" type="text" name="nombre1" minlength="1" maxlength="50" required />
+                                                  <input class="form-control " id="nombre1" type="text" name="nombre1" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal13">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtnombre1" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="nombre2" class="control-label col-lg-3">Segundo Nombre <span ></span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="nombre2" type="text" name="nombre2" minlength="1" maxlength="50" required />
+                                                  <input class="form-control " id="nombre2" type="text" name="nombre2" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal14">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtnombre2" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="apellido1" class="control-label col-lg-3">Primer Apellido <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="apellido1" type="text" name="apellido1" minlength="1" maxlength="50" required />
+                                                  <input class="form-control " id="apellido1" type="text" name="apellido1" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal15">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtapellido1" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="apellido2" class="control-label col-lg-3">Segundo Apellido <span ></span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="apellido2" type="text" name="apellido2" minlength="1" maxlength="50" required />
+                                                  <input class="form-control " id="apellido2" type="text" name="apellido2" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal16">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtapellido2" ></div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="credencial" class="control-label col-lg-3">Credencial <span class="required">*</span></label>
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                                   
-                                                  <input class="form-control " id="credencial" type="text" name="credencial" minlength="1" maxlength="50" required />
+                                                  <input class="form-control " id="credencial" type="text" name="credencial" minlength="1" maxlength="50" onblur="javascript:validar();" required />
                                                   <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                         
                                               </div>
                                               
                                           </div>
+                                          <div class="alert col-lg-12 " id="txtcredencial" ></div>
                                       </div>
                                      
                                       <div class="form-group">
@@ -918,6 +926,131 @@ session_start();
   <script src="../js/jquery.slimscroll.min.js"></script>
   <script src="../js/main.js"></script>
   
+
+
+  <script type="text/javascript">
+
+      function validaremail(correo){
+          var tester= /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
+          return tester.test(correo);
+          
+      }
+
+      function validarclave(clave){
+          var tester= /^([a-zA-Z0-9*.,-_+´]{4,20})+$/;
+          return tester.test(clave);
+          
+      }
+
+      function validarsololetras(atributo){
+          var tester= /^([a-zA-Z0´])+$/;
+          return tester.test(atributo);
+      }
+
+      function validarsolonumeros(atributo){
+          var tester= /^([0-9])+$/;
+          return tester.test(atributo);
+      }
+
+      
+
+
+
+
+      function validar(){
+          var cedula=document.getElementById('cedula').value;
+          var nombre1=document.getElementById('nombre1').value;
+          var nombre2=document.getElementById('nombre2').value;
+          var apellido1=document.getElementById('apellido1').value;
+          var apellido2=document.getElementById('apellido2').value;
+          var credencial=document.getElementById('credencial').value;
+         
+         
+          if(cedula==""){
+            $('#txtcedula').html('Este Campo es Obligatorio. Por favor ingrese la Cédula del Funcionario').slideDown(500);
+            $('#cedula').focus();
+            return false;
+          }
+          else{
+            $('#txtcedula').html('').slideUp(300);
+
+          }
+
+
+          if(nombre1==""){
+            $('#txtnombre1').html('Este Campo es Obligatorio. Por favor ingrese el primer Nombre del Funcionario').slideDown(500);
+            $('#nombre1').focus();
+            return false;
+          }
+          else{
+            $('#txtnombre1').html('').slideUp(300);
+
+          }
+          
+          if(validarsololetras(nombre1)==false){
+            $('#txtnombre1').html('El Nombre no puede contener dígitos').slideDown(500);
+            $('#nombre1').focus();
+            return false;
+          }
+          else{
+            $('#txtnombre1').html('').slideUp(300);
+
+          }
+
+          if(nombre2!=""){
+            if(validarsololetras(nombre2)==false){
+            $('#txtnombre2').html('El Nombre no puede contener dígitos').slideDown(500);
+            $('#nombre2').focus();
+            return false;
+          }
+          else{
+            $('#txtnombre2').html('').slideUp(300);
+
+          }
+          }
+          
+
+          if(apellido1==""){
+            $('#txtapellido1').html('Este Campo es Obligatorio. Por favor ingrese el primer Apellido del Funcionario').slideDown(500);
+            $('#apellido1').focus();
+            return false;
+          }
+          else{
+            $('#txtapellido1').html('').slideUp(300);
+
+          }
+
+          if(validarsololetras(apellido2)==false){
+            $('#txtapellido2').html('El Apellido no puede contener dígitos').slideDown(500);
+            $('#apellido2').focus();
+            return false;
+          }
+          else{
+            $('#txtapellido2').html('').slideUp(300);
+
+          }
+
+
+          if(credencial==""){
+            $('#txtcredencial').html('Este Campo es Obligatorio. Por favor ingrese la Credencial del Funcionario').slideDown(500);
+            $('#credencial').focus();
+            
+            return false;
+          }
+          else{
+            $('#txtcredencial').html('').slideUp(300);
+            
+
+          }
+
+          
+      }
+
+      
+    </script>
+
+
+
   <script>
     
      
@@ -942,10 +1075,10 @@ session_start();
               url:"../CONTROLADOR/Controlador_ConsultarF.php",
               method: "GET",              
               data:{"dato":dato},
-              error: function( XMLHttpRequest,  textStatus,  errorThrown) {
+              error: function( jqXHR,  textStatus,  errorThrown) {
                   //alert('Error Ajax Procedimientos');
                   alert(textStatus);
-                  console.log(XMLHttpRequest);
+                  console.log(textStatus);
               },
               success: function(resultado){
                  //$("#tabla").empty();

@@ -239,7 +239,7 @@ session_start();
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="ejemplo.php">Estad&iacute;sticas por Mes</a></li>
+                          <li><a class="" href="general.html">Estad&iacute;sticas por Mes</a></li>
                           <li><a class="" href="buttons.html">Estad&iacute;sticas por Año</a></li>
                           <li><a class="" href="grids.html">Estad&iacute;sticas por lugar</a></li>
                       </ul>
@@ -303,7 +303,7 @@ session_start();
                   </li>   
                  
                   <li class="sub-menu">
-                      <a href="Resena.php" class="">
+                      <a href="Bitacora.php" class="">
                           <i class="icon_table"></i>
                            <span>Manejar Bitácora</span>
                           

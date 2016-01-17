@@ -103,7 +103,41 @@
 	   	   return  $datos;
     	}
 
+    	public function traerdatos($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM procedimiento WHERE numero_pro='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
 
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
+
+    	public function traerdatos2($codigo){
+	       
+		  	$this->objDatos= new clsDatos();
+		    $this->objDatos->conectar();
+	      	$sql = "SELECT * FROM procedimiento WHERE codigo_pro='$codigo'";
+	      	
+	   		$datos =  $this->objDatos->consulta_query($sql);
+
+	   		// $this->objDatos->desconectar();
+
+	   	  // return  $this->objDatos->resultado($datos);
+	   	   $respuesta= $this->objDatos->resultadoinicio($datos);
+
+	   	   
+	   	   		return $respuesta;
+	   	   
+    	}
 
 
 	}

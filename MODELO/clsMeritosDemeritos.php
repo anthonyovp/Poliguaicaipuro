@@ -105,8 +105,8 @@
 		  	$this->objDatos= new clsDatos();
 		    $this->objDatos->conectar();
 	      	$sql = "SELECT p.* , f.* , COUNT(md.tipo_mer_dem) AS cantidad_mer_dem
-				,COUNT(if(md.tipo_mer_dem = 'merito',1,NULL)) AS cantidad_mer
-				, COUNT(if(md.tipo_mer_dem = 'demerito',1,NULL)) AS cantidad_dem
+				,COUNT(if(md.tipo_mer_dem = 'Meritos',1,NULL)) AS cantidad_mer
+				, COUNT(if(md.tipo_mer_dem = 'Demeritos',1,NULL)) AS cantidad_dem
 				, GROUP_CONCAT(md.codigo_fun_mer ORDER BY md.fecha_fun_mer) AS codigo_fun_mer 
 				, GROUP_CONCAT(md.fecha_fun_mer ORDER BY md.fecha_fun_mer) AS fecha_fun_mer 
 				, GROUP_CONCAT(md.dependencia_fun_mer ORDER BY md.fecha_fun_mer) AS dependencia_fun_mer 
@@ -128,8 +128,8 @@
 		  	$this->objDatos= new clsDatos();
 		    $this->objDatos->conectar();
 	      	$sql = "SELECT p.* , f.* , COUNT(md.tipo_mer_dem) AS cantidad_mer_dem
-				,COUNT(if(md.tipo_mer_dem = 'merito',1,NULL)) AS cantidad_mer
-				, COUNT(if(md.tipo_mer_dem = 'demerito',1,NULL)) AS cantidad_dem
+				,COUNT(if(md.tipo_mer_dem = 'Meritos',1,NULL)) AS cantidad_mer
+				, COUNT(if(md.tipo_mer_dem = 'Demeritos',1,NULL)) AS cantidad_dem
 				, GROUP_CONCAT(md.codigo_fun_mer ORDER BY md.fecha_fun_mer) AS codigo_fun_mer 
 				, GROUP_CONCAT(md.fecha_fun_mer ORDER BY md.fecha_fun_mer) AS fecha_fun_mer 
 				, GROUP_CONCAT(md.dependencia_fun_mer ORDER BY md.fecha_fun_mer) AS dependencia_fun_mer 

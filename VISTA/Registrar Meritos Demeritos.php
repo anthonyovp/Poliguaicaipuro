@@ -807,8 +807,8 @@ session_start();
                                           <div class="col-lg-9">
                                               <div class="input-group">
                                                  <select class="form-control " id="tip" type="text" name="tip" required>
-                                                    <option value="Merito">M&eacute;rito</option>
-                                                    <option value="Demerito">Dem&eacute;rito</option>
+                                                    <option value="Meritos">M&eacute;ritos</option>
+                                                    <option value="Demeritos">Dem&eacute;ritos</option>
                                                   </select> 
                                                 
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
@@ -820,16 +820,16 @@ session_start();
                                           <div class="col-lg-9">
                                             <div class="input-group">
                                               <select class="form-control " id="cat" type="text" name="cat" required>
-                                                  <option class = "mer" value="Agradecimiento">Agradecimiento</option>
-                                                  <option class = "mer" value="Felicitacion">Felicitaci&oacute;n</option>
+                                                  <option class = "mer" value="Agradecimientos">Agradecimientos</option>
+                                                  <option class = "mer" value="Felicitaciones">Felicitaci&oacute;nes</option>
                                                   <option class = "mer" value="Cursos">Cursos</option>
                                                   <option class = "mer" value="Lic">Lic.</option>
                                                   <option class = "mer" value="TSU">TSU</option>
-                                                  <option class = "mer" value="">Orden del D&iacute;a</option>
-                                                  <option class = "dem oculto" value="Asistencia">Asistencia</option>
-                                                  <option class = "dem oculto" value="Reporte">Reporte</option>
+                                                  <option class = "mer" value="Orden del Dia">Orden del D&iacute;a</option>
+                                                  <option class = "dem oculto" value="Reportes">Reportes</option>
+                                                  <option class = "dem oculto" value="Asistencias">Asistencias</option>
                                                   <option class = "dem oculto" value="Inasistencias">Inasistencias</option>
-                                                  <option class = "dem oculto" value="Extravio">Extrav&iacute;o</option>
+                                                  <option class = "dem oculto" value="Extravios">Extrav&iacute;os</option>
                                                 </select> 
                                               <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
                                             </div>
@@ -848,7 +848,7 @@ session_start();
                                                   <option class = "cur" value="No Policial">No Policial</option>
                                                   <option class = "asi" value="Voluntaria">Voluntaria</option>
                                                   <option class = "asi" value="Obligatoria">Obligatoria</option>
-                                                  <option class = "ext" value="Credencial">Credencial</option>
+                                                  <option class = "ext" value="Credenciales">Credenciales</option>
                                                   <option class = "ext" value="Equipo">Equipo</option>
                                                 </select> 
                                                 <span class="input-group-addon"> <a class="" href="#modal12">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
@@ -957,7 +957,7 @@ session_start();
             var cate = $("#cat").val();
             cate = cate.toLowerCase();
             
-            if(cate == "felicitacion" || cate == "cursos" || cate == "asistencias" || cate == "extravio"){
+            if(cate == "felicitaciones" || cate == "cursos" || cate == "asistencias" || cate == "extravios"){
               $("#eMeritos").show("fast");
               $("#esp").prop('required',true);
               if(cate == "felicitaciones"){
@@ -1001,7 +1001,7 @@ session_start();
             var tipo = $("#tip").val();
             tipo = tipo.toLowerCase();
             
-            if(tipo == "merito" ){
+            if(tipo == "meritos" ){
               $('#cat option:eq(0)').prop('selected', true);
               $("#eMeritos").hide("fast");
               $("#esp").prop('required',false);

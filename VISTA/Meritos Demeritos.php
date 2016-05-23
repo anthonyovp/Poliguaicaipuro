@@ -838,10 +838,14 @@ session_start();
       });
 
       $(document).ready(function() {
+
+
+         
            
          $("#buscar").focus();
 
-         $("#foredi").on( "click", function(e) {
+
+         $("#foredi").on( "submit", function(e) {
             e.preventDefault();
          });
 
@@ -916,7 +920,8 @@ session_start();
 
                     
               $(".vermas").on( "click", function() {
-            
+
+                
                 var indice = $(this).attr("id");          
                 var vermas = " <thead>";
                     vermas += "<tr class='success'>";                                    
@@ -973,22 +978,46 @@ session_start();
                         }
 
                         vermas += "<tr  class = 'visible'>";
-                        vermas += "  <td>"+resultado[indice]["tipo_mer_dem"][i]+"</td>";
-                        vermas += "  <td>"+resultado[indice]["fecha_fun_mer"][i]+"</td>";
-                        vermas += "  <td >"+resultado[indice]["categoria_mer_dem"][i]+"</td>";
-                        vermas += "  <td>"+resultado[indice]["especificacion_mer_dem"][i]+"</td>";
-                        vermas += "  <td>"+resultado[indice]["dependencia_fun_mer"][i]+"</td>";
-                        vermas += "  <td colspan = '2'>"+resultado[indice]["comentario_fun_mer"][i]+"</td>";
-                        vermas +="<td> "+"<button type = 'button' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
+                        vermas += "  <td id = 'tipo"+resultado[indice]["codigo_fun_mer"][i]+"' name = '"+resultado[indice]["tipo_mer_dem"][i]+"'>"+resultado[indice]["tipo_mer_dem"][i]+"</td>";
+                        vermas += "  <td id = 'fecha"+resultado[indice]["codigo_fun_mer"][i]+"'>"+resultado[indice]["fecha_fun_mer"][i]+"</td>";
+                        vermas += "  <td id = 'categoria"+resultado[indice]["codigo_fun_mer"][i]+"' name = '"+resultado[indice]["categoria_mer_dem"][i]+"'>"+resultado[indice]["categoria_mer_dem"][i]+"</td>";
+                        vermas += "  <td id = 'especificacion"+resultado[indice]["codigo_fun_mer"][i]+"' name = '"+resultado[indice]["especificacion_mer_dem"][i]+"' >"+resultado[indice]["especificacion_mer_dem"][i]+"</td>";
+                        vermas += "  <td id = 'dependencia"+resultado[indice]["codigo_fun_mer"][i]+"'>"+resultado[indice]["dependencia_fun_mer"][i]+"</td>";
+                        vermas += "  <td id = 'comentario"+resultado[indice]["codigo_fun_mer"][i]+"' colspan = '2'>"+resultado[indice]["comentario_fun_mer"][i]+"</td>";
+                        vermas +="<td> "+"<button id = 'btneditar' name = '"+resultado[indice]["codigo_fun_mer"][i]+"' type = 'button' class = 'btn btn-warning editar' ><span class='glyphicon glyphicon-pencil blancoimg'></span></button>"+" </td>";
                         vermas += "</tr>";
                         vermas += "<tr class=' oculto'>";
-                        vermas += "  <td><input name = 'tip' id = 'tip_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '8' minlength='1'   type='text' value = '"+resultado[indice]["tipo_mer_dem"][i]+"'  required /></td>";
+                        vermas += "  <td>"+"<select name='tip' id='tip_"+resultado[indice]["codigo_fun_mer"][i]+"' required>"+
+                                              "<option value='Meritos'>M&eacute;ritos</option>"+
+                                              "<option value='Demeritos'>Dem&eacute;ritos</option>"+
+                                            "</select>"+"</td>";
                         vermas += "  <td><input name = 'fec' id = 'fec_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '11' minlength='1'   type='text' value = '"+resultado[indice]["fecha_fun_mer"][i]+"'  required /></td>";
-                        vermas += "  <td><input name = 'cat' id = 'cat_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '18' minlength='1'   type='text' value = '"+resultado[indice]["categoria_mer_dem"][i]+"'  required /></td>";
-                        vermas += "  <td><input name = 'esp' id = 'esp_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '12' minlength='6' type='text' value = '"+resultado[indice]["especificacion_mer_dem"][i]+"' required /></td>";
+                        vermas += "  <td>"+"<select name = 'cat' id = 'cat_"+resultado[indice]["codigo_fun_mer"][i]+"' required>"+
+                                                  "<option class = 'mer' value='Agradecimientos'>Agradecimientos</option>"+
+                                                  "<option class = 'mer' value='Felicitaciones'>Felicitaci&oacute;nes</option>"+
+                                                  "<option class = 'mer' value='Cursos'>Cursos</option>"+
+                                                  "<option class = 'mer' value='Lic'>Lic.</option>"+
+                                                  "<option class = 'mer' value='TSU'>TSU</option>"+
+                                                  "<option class = 'mer' value='Orden del Dia'>Orden del D&iacute;a</option>"+
+                                                  "<option class = 'dem oculto' value='Reportes'>Reportes</option>"+
+                                                  "<option class = 'dem oculto' value='Asistencias'>Asistencias</option>"+
+                                                  "<option class = 'dem oculto' value='Inasistencias'>Inasistencias</option>"+
+                                                  "<option class = 'dem oculto' value='Extravios'>Extrav&iacute;os</option>"+
+                                                "</select>"+"</td>";
+                        vermas += "  <td id = 'eMeritos' ><select class = 'oculto' name = 'esp' id = 'esp_"+resultado[indice]["codigo_fun_mer"][i]+"'required>"+
+                                                  "<option class = 'fel' value='Internas'>Internas</option>"+
+                                                  "<option class = 'fel' value='Externas'>Externas</option>"+
+                                                  "<option class = 'cur' value='Policial'>Policial</option>"+
+                                                  "<option class = 'cur' value='No Policial'>No Policial</option>"+
+                                                  "<option class = 'asi' value='Voluntaria'>Voluntaria</option>"+
+                                                  "<option class = 'asi' value='Obligatoria'>Obligatoria</option>"+
+                                                  "<option class = 'ext' value='Credenciales'>Credenciales</option>"+
+                                                  "<option class = 'ext' value='Equipo'>Equipo</option>"+
+                                                  "<option class = 'oculta' value=''></option>"+
+                                                "</select>"+"</td>";
                         vermas += "  <td><input name = 'dep' id = 'dep_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '10' minlength='6' type='text' value = '"+resultado[indice]["dependencia_fun_mer"][i]+"' required /></td>";
                         vermas += "  <td colspan = '2'><input name = 'com' id = 'com_"+resultado[indice]["codigo_fun_mer"][i]+"' size = '60' minlength='1' type='text' value = '"+resultado[indice]["comentario_fun_mer"][i]+"' required /></td>";
-                        vermas+="<td> "+"<button name = 'btn' id = '"+resultado[indice]["codigo_fun_mer"][i]+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'button' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
+                        vermas+="<td id = 'btnaceptar'> "+"<button name = 'btn' id = '"+resultado[indice]["codigo_fun_mer"][i]+"' type = 'submit' class = 'btn btn-success aceptaredi' > <span class='glyphicon glyphicon-ok blancoimg'></span></button>"+"<button  type = 'button' class = 'btn btn-danger cancelaredi'> <span class ='glyphicon glyphicon-remove blancoimg'></span></button>"+"</td>";
                         vermas += "</tr>"; 
       
 
@@ -1011,6 +1040,141 @@ session_start();
 
 
                    $(".editar").on( "click", function() {
+
+                      var code = $(this).attr("name");
+
+
+
+                      var tipo = $("#tipo"+code).attr("name");
+                      tipo = tipo.toLowerCase();
+                      var cate = $("#categoria"+code).attr("name");
+                      
+                      var espe = $("#especificacion"+code).attr("name");
+                      
+
+                  
+                      
+                      if(tipo == "meritos" ){//manera 1
+                        $('#tip_'+code+' option:eq(0)').prop('selected', true);
+                        $(".mer").show("fast");
+                        $(".dem").hide("fast");
+
+                      }else{
+                        $('#tip_'+code+' option:eq(1)').prop('selected', true);
+                        $(".dem").show("fast");
+                        $(".mer").hide("fast");
+                        
+                      }
+
+
+                      $('#cat_'+code+' option[value='+cate+']').prop('selected', true);// manera 2 (mejor)
+                      
+                      if(espe != "No Aplica"){//especificacion
+                        $('#esp_'+code+' option[value='+espe+']').prop('selected', true);
+                        cate = cate.toLowerCase();
+                        if(cate == "felicitaciones"){
+                            
+                            $(".fel").show("fast");
+                            $(".cur").hide("fast");
+                            $(".asi").hide("fast");
+                            $(".ext").hide("fast");
+                          } 
+                          else if(cate == "cursos"){
+                            
+                            $(".cur").show("fast");
+                            $(".fel").hide("fast");
+                            $(".asi").hide("fast");
+                            $(".ext").hide("fast");
+                          }
+                          else if(cate == "asistencias"){
+                            
+                            $(".asi").show("fast");
+                            $(".fel").hide("fast");
+                            $(".cur").hide("fast");
+                            $(".ext").hide("fast");
+                          }
+                          else{
+                            
+                            $(".ext").show("fast");
+                            $(".fel").hide("fast");
+                            $(".cur").hide("fast");
+                            $(".asi").hide("fast");
+                          }
+
+                        $("#esp_"+code).show("fast");
+                      }else{
+                        $("#esp_"+code).hide("fast");
+                      }
+
+                      
+
+                      $("#cat_"+code).change(function(){
+                        var cate = $("#cat_"+code).val();
+                        cate = cate.toLowerCase();
+                        $('#esp_'+code+' option:eq(8)').prop('selected', true);
+                        
+                        if(cate == "felicitaciones" || cate == "cursos" || cate == "asistencias" || cate == "extravios"){
+
+                          $("#esp_"+code).show("fast");
+                          $("#esp_"+code).prop('required',true);
+                          if(cate == "felicitaciones"){
+                            $('#esp_'+code+' option:eq(0)').prop('selected', true);
+                            $(".fel").show("fast");
+                            $(".cur").hide("fast");
+                            $(".asi").hide("fast");
+                            $(".ext").hide("fast");
+                          } 
+                          else if(cate == "cursos"){
+                            $('#esp_'+code+' option:eq(2)').prop('selected', true);
+                            $(".cur").show("fast");
+                            $(".fel").hide("fast");
+                            $(".asi").hide("fast");
+                            $(".ext").hide("fast");
+                          }
+                          else if(cate == "asistencias"){
+                            $('#esp_'+code+' option:eq(4)').prop('selected', true);
+                            $(".asi").show("fast");
+                            $(".fel").hide("fast");
+                            $(".cur").hide("fast");
+                            $(".ext").hide("fast");
+                          }
+                          else{
+                            $('#esp_'+code+' option:eq(6)').prop('selected', true);
+                            $(".ext").show("fast");
+                            $(".fel").hide("fast");
+                            $(".cur").hide("fast");
+                            $(".asi").hide("fast");
+                          }
+
+                        }else{
+                          $("#esp_"+code).hide("fast");
+                          $("#esp_"+code).prop('required',false);
+                          }
+                        
+
+                      });
+
+                      $("#tip_"+code).change(function(){
+                        $('#esp_'+code+' option:eq(8)').prop('selected', true);//esp inicalizar vacio 
+                        var tipo = $("#tip_"+code).val();
+                        tipo = tipo.toLowerCase();
+                        
+                        if(tipo == "meritos" ){
+                          $('#cat_'+code+' option:eq(0)').prop('selected', true);
+                          $("#esp_"+code).hide("fast");
+                          $("#esp_"+code).prop('required',false);
+                          $(".mer").show("fast");
+                          $(".dem").hide("fast");
+                        }else{
+                          $('#cat_'+code+' option:eq(6)').prop('selected', true);
+                          $("#esp_"+code).hide("fast");
+                          $("#esp_"+code).prop('required',false);
+                          $(".dem").show("fast");
+                          $(".mer").hide("fast");
+                          }
+                        
+
+                      }); 
 
                       
                      
@@ -1039,6 +1203,8 @@ session_start();
                      //aceptar editar
                      $(".aceptaredi").on( "click", function() {
 
+                      
+
                       var elemento = $(this);
 
                       var cod = $(this).attr("id"); 
@@ -1050,15 +1216,16 @@ session_start();
                       var dep = document.getElementById('dep_'+cod).value;
                       var com = document.getElementById('com_'+cod).value;
 
-                      var merdem = "";      
                       
-                      merdem += "  <td>"+tip+"</td>";
-                      merdem += "  <td>"+fec+"</td>";
-                      merdem += "  <td>"+cat+"</td>";
-                      merdem += "  <td>"+esp+"</td>";
-                      merdem += "  <td>"+dep+"</td>";
-                      merdem += "  <td colspan = '2'>"+com+"</td>";
-
+                      //td con info
+                      $('#tipo'+cod).html(tip);
+                      $('#fecha'+cod).html(fec);
+                      $('#categoria'+cod).html(cat);
+                      $('#especificacion'+cod).html(esp);
+                      $('#dependencia'+cod).html(dep);
+                      $('#comentario'+cod).html(com);
+                      
+                      //input con info
                       
                       
                       
@@ -1067,20 +1234,24 @@ session_start();
                       $.post("../CONTROLADOR/Controlador_Meritos_Demeritos.php",{cod:cod,tip: tip, fec: fec, cat:cat, esp: esp, dep: dep, com: com},function(){
 
                         elemento.closest("tr").hide("slow",function(){
-                          $(this).closest("tr").prev("tr").html(merdem);
+
                            $(this).closest("tr").prev("tr").show("fast");
                           
                       
                             $(".editar").on( "click", function() {
+
+                              $('#tip_'+cod+' option[value='+tip+']').prop('selected', true);
+                              $('#cat_'+cod+' option[value='+cat+']').prop('selected', true);
+                              $('#esp_'+cod+' option[value='+esp+']').prop('selected', true);
                             
-                            $(this).closest("tr").hide("slow",function(){
+                              $(this).closest("tr").hide("slow",function(){
                                  $(this).closest("tr").next("tr").show("fast");
                                 
                             
+                              });
                             });
-                          });
 
-                        });
+                          });
 
                       });
 

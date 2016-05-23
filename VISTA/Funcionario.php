@@ -859,6 +859,32 @@ session_start();
                                           </div>
                                           <div class="alert col-lg-12 " id="txtcredencial" ></div>
                                       </div>
+                                      <div class="form-group ">
+                                          <label for="status" class="control-label col-lg-3">Status <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="status" type="text" name="status" minlength="1" maxlength="50" onblur="javascript:validar();" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="alert col-lg-12 " id="txtcredencial" ></div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="fnacimiento" class="control-label col-lg-3">Fecha Nacimiento <span class="required">*</span></label>
+                                          <div class="col-lg-9">
+                                            <div class="input-group">
+                                                  
+                                                  <input class="form-control " id="fnacimiento" type="text" name="fnacimiento" minlength="1" maxlength="50" onblur="javascript:validar();" required />
+                                                  <span class="input-group-addon"> <a class="" href="#modal17">&nbsp;<i class="glyphicon glyphicon-question-sign"></i></a></span>
+                        
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="alert col-lg-12 " id="txtcredencial" ></div>
+                                      </div>
                                      
                                       <div class="form-group">
                                           <div class="col-lg-offset-3 col-lg-9">
